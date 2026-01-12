@@ -103,14 +103,39 @@ export const VesuExplorer: React.FC<VesuExplorerProps> = ({ onBack, walletSessio
                 <div className="w-full max-w-sm space-y-8 text-center">
                     <div className="space-y-4">
                         <h2 className="text-4xl font-black text-white uppercase tracking-tighter">
-                            Deposit & Earn
+                            {activeTab === 'stake' ? 'Deposit & Earn' : 'Withdraw from Vault'}
                         </h2>
                         <p className="text-sm text-zinc-400 leading-relaxed font-light">
-                            Deposit your USDC into Vesu pools to start earning institutional-grade yield.
+                            {activeTab === 'stake'
+                                ? 'Deposit your STRK into Vesu pools to start earning institutional-grade yield.'
+                                : 'Withdraw your STRK from the Vesu vault back to your wallet.'}
                         </p>
                     </div>
 
                     <div className="pt-4 space-y-4">
+                        {/* Tabs: Deposit / Withdraw */}
+                        <div className="flex items-center justify-center gap-3">
+                            <button
+                                onClick={() => setActiveTab('stake')}
+                                className={`flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold transition-colors ${
+                                    activeTab === 'stake'
+                                        ? 'bg-white text-black'
+                                        : 'bg-zinc-900/30 text-zinc-400 hover:text-white'
+                                }`}
+                            >
+                                <ArrowUpCircle size={14} /> Deposit
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('withdraw')}
+                                className={`flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold transition-colors ${
+                                    activeTab === 'withdraw'
+                                        ? 'bg-white text-black'
+                                        : 'bg-zinc-900/30 text-zinc-400 hover:text-white'
+                                }`}
+                            >
+                                <ArrowDownCircle size={14} /> Withdraw
+                            </button>
+                        </div>
                         {!walletSession ? (
                             <div className="bg-zinc-900/50 border border-amber-500/20 p-6 rounded-2xl space-y-4 animate-in fade-in zoom-in-95 duration-500">
                                 <div className="flex flex-col items-center text-center space-y-2">
@@ -161,7 +186,7 @@ export const VesuExplorer: React.FC<VesuExplorerProps> = ({ onBack, walletSessio
                                         <label className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
                                             {activeTab === 'stake' ? 'Amount to Stake' : 'Amount to Withdraw'}
                                         </label>
-                                        <span className="text-[10px] font-bold text-zinc-500 uppercase">USDC</span>
+                                        <span className="text-[10px] font-bold text-zinc-500 uppercase">STRK</span>
                                     </div>
                                     <input
                                         type="number"
