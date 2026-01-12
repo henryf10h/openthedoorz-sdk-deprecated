@@ -11,45 +11,35 @@ import {
     ArrowDownCircle
 } from 'lucide-react';
 
-import { useStakeVesuUsdc } from '@/lib/hooks/useStakeVesuUsdc';
-import { useWithdrawVesuUsdc } from '@/lib/hooks/useWithdrawVesuUsdc';
+import useVesuPool from '@/lib/hooks/useVesuPool';
 import WalletManager, { WalletSession } from './WalletManager';
 import { useFetchWallet } from '@/lib/hooks/useFetchWallet';
 import { useTokenBalance } from '@/lib/hooks/useTokenBalance';
 
 interface VesuExplorerProps {
     onBack: () => void;
-    walletSession: WalletSession | null;
-    onSessionChange: (session: WalletSession | null) => void;
+    walletSession?: WalletSession | null;
+    onSessionChange?: (session: WalletSession | null) => void;
 }
 
 export const VesuExplorer: React.FC<VesuExplorerProps> = ({ onBack, walletSession, onSessionChange }) => {
-    const {
-        stakeVesuUsdcAsync,
-        isLoading: isStaking,
-        isSuccess: stakeSuccess,
-        data: stakeTxId,
-        error: stakeError
-    } = useStakeVesuUsdc();
-
-    const {
-        withdrawVesuUsdcAsync,
-        isLoading: isWithdrawing,
-        isSuccess: withdrawSuccess,
-        data: withdrawTxId,
-        error: withdrawError
-    } = useWithdrawVesuUsdc();
+    const { deposit, withdraw, isLoading: isPoolLoading } = useVesuPool();
 
     const { wallet } = useFetchWallet();
-    const { balance: usdcBalance, isLoading: balanceLoading } = useTokenBalance('USDC', wallet?.publicKey);
+    const { balance: strkBalance, isLoading: balanceLoading } = useTokenBalance('STRK', wallet?.publicKey);
 
     const [amount, setAmount] = useState<string>('1');
     const [activeTab, setActiveTab] = useState<'stake' | 'withdraw'>('stake');
 
-    const isLoading = isStaking || isWithdrawing;
-    const isSuccess = stakeSuccess || withdrawSuccess;
-    const txId = stakeTxId || withdrawTxId;
-    const error = stakeError || withdrawError;
+    // Safe fallbacks for optional session callbacks/values
+    const safeOnSessionChange: (session: WalletSession | null) => void = onSessionChange ?? (() => {});
+    const safeWalletSession: WalletSession | null = walletSession ?? null;
+
+    const isLoading = isPoolLoading;
+    // local result state for tx feedback
+    const [txId, setTxId] = useState<string | null>(null);
+    const [error, setError] = useState<any>(null);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleAction = async () => {
         if (!walletSession || !wallet) return;
@@ -62,38 +52,35 @@ export const VesuExplorer: React.FC<VesuExplorerProps> = ({ onBack, walletSessio
         }
 
         if (activeTab === 'stake') {
-            const balance = parseFloat(usdcBalance || '0');
+            const balance = parseFloat(strkBalance || '0');
             if (numAmount > balance) {
-                alert(`Insufficient USDC balance. You have ${usdcBalance} USDC.`);
+                alert(`Insufficient STRK balance. You have ${strkBalance} STRK.`);
                 return;
             }
 
             try {
-                await stakeVesuUsdcAsync({
-                    encryptKey: walletSession.encryptKey,
-                    wallet: {
-                        publicKey: wallet.publicKey,
-                        encryptedPrivateKey: wallet.encryptedPrivateKey
-                    },
-                    amount: numAmount,
-                    receiverWallet: wallet.publicKey,
+                const hash = await deposit({
+                    amount: String(numAmount),
+                    receiver: wallet.publicKey,
                 });
+                setTxId(hash as string | null);
+                setIsSuccess(Boolean(hash));
+                setError(null);
             } catch (err) {
                 console.error('Staking failed:', err);
+                setError(err);
+                setIsSuccess(false);
             }
         } else {
             try {
-                await withdrawVesuUsdcAsync({
-                    encryptKey: walletSession.encryptKey,
-                    wallet: {
-                        publicKey: wallet.publicKey,
-                        encryptedPrivateKey: wallet.encryptedPrivateKey
-                    },
-                    amount: numAmount,
-                    recipient: wallet.publicKey,
-                });
+                const hash = await withdraw({ amount: String(numAmount), recipient: wallet.publicKey });
+                setTxId(hash as string | null);
+                setIsSuccess(Boolean(hash));
+                setError(null);
             } catch (err) {
                 console.error('Withdrawal failed:', err);
+                setError(err);
+                setIsSuccess(false);
             }
         }
     };
@@ -138,8 +125,8 @@ export const VesuExplorer: React.FC<VesuExplorerProps> = ({ onBack, walletSessio
                                 </div>
                                 <div className="pt-2">
                                     <WalletManager
-                                        onSessionChange={onSessionChange}
-                                        walletSession={walletSession}
+                                        onSessionChange={safeOnSessionChange}
+                                        walletSession={safeWalletSession}
                                     />
                                 </div>
                             </div>
@@ -155,12 +142,12 @@ export const VesuExplorer: React.FC<VesuExplorerProps> = ({ onBack, walletSessio
                                             <div className="text-left">
                                                 <p className="text-[9px] text-zinc-500 font-bold uppercase tracking-[0.1em]">Available Balance</p>
                                                 <p className="text-sm font-mono font-bold text-white">
-                                                    {balanceLoading ? '---' : usdcBalance} <span className="text-zinc-500">USDC</span>
+                                                    {balanceLoading ? '---' : strkBalance} <span className="text-zinc-500">STRK</span>
                                                 </p>
                                             </div>
                                         </div>
                                         <button
-                                            onClick={() => setAmount(usdcBalance || '0')}
+                                            onClick={() => setAmount(strkBalance || '0')}
                                             className="text-[9px] font-bold uppercase tracking-widest text-blue-400 hover:text-blue-300 transition-colors bg-blue-400/5 px-2 py-1 rounded border border-blue-400/10"
                                         >
                                             Use Max
@@ -196,13 +183,13 @@ export const VesuExplorer: React.FC<VesuExplorerProps> = ({ onBack, walletSessio
                                         <Zap size={14} className="group-hover:fill-black transition-all" />
                                     )}
                                     {isLoading
-                                        ? (activeTab === 'stake' ? 'Staking...' : 'Withdrawing...')
-                                        : (activeTab === 'stake' ? 'Connect Pool' : 'Withdraw from Pool')}
+                                        ? (activeTab === 'stake' ? 'Depositing...' : 'Withdrawing...')
+                                        : (activeTab === 'stake' ? 'Deposit' : 'Withdraw')}
                                 </button>
 
                                 {isSuccess && txId && (
                                     <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-[10px] text-emerald-400 font-bold uppercase tracking-widest animate-in fade-in slide-in-from-top-2">
-                                        {activeTab === 'stake' ? 'Staking Successful!' : 'Withdrawal Successful!'} <br />
+                                        {activeTab === 'stake' ? 'Deposit Successful!' : 'Withdrawal Successful!'} <br />
                                         <span className="font-mono text-zinc-500">{txId.slice(0, 20)}...</span>
                                     </div>
                                 )}
