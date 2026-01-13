@@ -24,7 +24,8 @@ export function useTokenPrices() {
                 setIsLoading(true);
                 // CoinGecko IDs: ethereum, starknet, usd-coin
                 // Try a few times in case of transient network/CORS issues from the browser
-                const url = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum,starknet,usd-coin&vs_currencies=usd';
+                // Use internal API route to avoid browser CORS/network failures
+                const url = '/api/prices';
                 let attempt = 0;
                 let response: Response | null = null;
                 let lastError: any = null;
