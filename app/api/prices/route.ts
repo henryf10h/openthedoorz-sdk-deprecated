@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 
-// This route must run dynamically (server runtime) because it proxies
-// live requests to CoinGecko. When using `next export`/`output: export`
-// Next requires routes to opt into dynamic behavior.
-export const dynamic = 'force-dynamic';
+// Static response with fallback prices for CoinGecko
+// Routes cannot be dynamic when using `output: export` for static HTML export
 
 export async function GET() {
     const url = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum,starknet,usd-coin&vs_currencies=usd';
