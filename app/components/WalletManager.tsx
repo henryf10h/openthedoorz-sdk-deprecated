@@ -150,7 +150,6 @@ export default function WalletManager({ onSessionChange, walletSession }: Wallet
                         </p>
                     </div>
                 </div>
-                </div>
             )}
         </div>
     );
