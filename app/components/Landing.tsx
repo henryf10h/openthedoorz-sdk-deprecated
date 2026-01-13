@@ -60,12 +60,12 @@ const Landing: React.FC = () => {
                 View Documentation
               </Link>
               <Link
-                href="https://github.com/reflecterlabs/openthedoorz-sdk"
+                href="https://www.reflecterlabs.xyz/start-project"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/5 transition-all flex items-center gap-2"
+                className="px-6 py-3 border border-black/10 text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-black/5 transition-all flex items-center gap-2 dark:border-white/10 dark:text-white"
               >
-                GitHub Repo
+                Start Project
               </Link>
             </div>
           </div>

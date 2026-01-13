@@ -17,17 +17,18 @@ body {
 }
 
 /* Light / Dark theme defaults */
+/* Force light mode background by default; components can use dark: variants */
 html {
-  background: white;
-  color: black;
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 html.dark {
-  background: #000000;
-  color: #e6e6e6;
+  background-color: #000000 !important;
+  color: #e6e6e6 !important;
 }
 
 body {
-  background: inherit;
-  color: inherit;
+  background-color: transparent !important;
+  color: inherit !important;
 }
