@@ -419,8 +419,8 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                       onClick={handleInitSend}
                       className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
                     >
-                      <ArrowUp size={16} className="text-white" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-white">Send</span>
+                      <ArrowUp size={16} className="text-black" />
+                      <span className="text-xs font-bold uppercase tracking-widest text-black">Send</span>
                     </button>
                     <button
                       onClick={() => {
@@ -429,8 +429,8 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                       }}
                       className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
                     >
-                      <ArrowDown size={16} className="text-white" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-white">Receive</span>
+                      <ArrowDown size={16} className="text-black" />
+                      <span className="text-xs font-bold uppercase tracking-widest text-black">Receive</span>
                     </button>
                   </div>
 
@@ -463,7 +463,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                           <TrendingUp size={24} className="text-blue-400" />
                         </div>
                         <div className="flex flex-col items-start">
-                          <span className="text-sm font-black uppercase tracking-widest text-white group-hover:text-blue-200 transition-colors">Lending & Loans</span>
+                          <span className="text-sm font-black uppercase tracking-widest text-black group-hover:text-blue-200 transition-colors">Lending & Loans</span>
                           <span className="text-[10px] text-zinc-400 font-medium tracking-wider">Earn Institutional Yield</span>
                         </div>
                       </div>
@@ -476,10 +476,10 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                     <div className="px-4 pt-4 grid grid-cols-1 border-b border-white/5">
                       <button
                         onClick={() => setActiveDashboardTab('assets')}
-                        className={`text-[9px] uppercase tracking-widest font-bold pb-3 whitespace-nowrap relative transition-colors flex justify-center text-white`}
+                        className={`text-[9px] uppercase tracking-widest font-bold pb-3 whitespace-nowrap relative transition-colors flex justify-center text-black`}
                       >
                         Assets
-                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></div>
+                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black"></div>
                       </button>
                     </div>
 
