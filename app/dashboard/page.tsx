@@ -36,17 +36,17 @@ export default function DashboardPage() {
 
   if (loading || !user) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-black">
+      <div className="flex min-h-screen items-center justify-center bg-white">
         <div className="text-center">
-          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-white border-t-transparent mx-auto"></div>
-          <p className="text-zinc-400 font-medium uppercase tracking-widest text-sm">Cargando...</p>
+          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-transparent mx-auto"></div>
+          <p className="text-zinc-600 font-medium uppercase tracking-widest text-sm">Cargando...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black pb-16">
+    <div className="min-h-screen bg-white text-black selection:bg-black selection:text-white pb-16">
       {/* Header del Prototipo */}
       <Header onOpenWallet={() => setIsWalletOpen(true)} />
 
@@ -71,11 +71,11 @@ export default function DashboardPage() {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Left/Center: Main Feature Area */}
           <div className="lg:col-span-2">
-            {!walletSession ? (
-              <div className="border border-white/10 bg-black p-12 rounded-xl shadow-[0_0_100px_rgba(255,255,255,0.05)] min-h-[500px] flex items-center justify-center">
+            !walletSession ? (
+              <div className="border border-gray-200 bg-white p-12 rounded-xl shadow-sm min-h-[500px] flex items-center justify-center">
                 <div className="text-center">
-                  <p className="text-zinc-400 text-sm uppercase tracking-widest mb-2">Paso 1</p>
-                  <p className="text-white font-bold text-lg mb-4">Conecta tu Wallet</p>
+                  <p className="text-zinc-500 text-sm uppercase tracking-widest mb-2">Paso 1</p>
+                  <p className="text-black font-bold text-lg mb-4">Conecta tu Wallet</p>
                   <button 
                     onClick={() => setIsWalletOpen(true)}
                     className="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-zinc-100 transition-colors uppercase tracking-widest text-sm"
@@ -85,7 +85,7 @@ export default function DashboardPage() {
                 </div>
               </div>
             ) : (
-              <div className="border border-white/10 bg-black rounded-xl shadow-[0_0_100px_rgba(255,255,255,0.05)] p-6">
+              <div className="border border-gray-200 bg-white rounded-xl shadow-sm p-6">
                 <VesuLending
                   walletInfo={{
                     publicKey: walletSession.publicKey,
@@ -103,8 +103,8 @@ export default function DashboardPage() {
             <NetworkSelector />
 
             {/* Quick Wallet Status */}
-            <div className="border border-white/10 bg-black rounded-xl shadow-[0_0_100px_rgba(255,255,255,0.05)] p-4">
-              <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Estado del Sistema</h3>
+            <div className="border border-gray-200 bg-white rounded-xl shadow-sm p-4">
+              <h3 className="text-xs font-bold text-black uppercase tracking-widest mb-4">Estado del Sistema</h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Red</span>
@@ -123,10 +123,10 @@ export default function DashboardPage() {
                     Activo
                   </span>
                 </div>
-                <div className="pt-3 border-t border-white/10">
+                <div className="pt-3 border-t border-gray-100">
                   <button
                     onClick={handleSignOut}
-                    className="w-full py-2 bg-white/5 hover:bg-white/10 text-white text-xs font-bold rounded-lg border border-white/10 hover:border-white/20 transition-all uppercase tracking-widest"
+                    className="w-full py-2 bg-gray-50 hover:bg-gray-100 text-black text-xs font-bold rounded-lg border border-gray-200 hover:border-gray-300 transition-all uppercase tracking-widest"
                   >
                     Cerrar Sesión
                   </button>

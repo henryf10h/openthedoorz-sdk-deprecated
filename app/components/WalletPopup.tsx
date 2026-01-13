@@ -304,7 +304,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full bg-zinc-950 border border-white/10 p-4 text-sm focus:border-white focus:outline-none transition-colors placeholder:text-zinc-400 text-white"
+                    className="w-full bg-gray-50 border border-gray-200 p-4 text-sm focus:border-gray-300 focus:outline-none transition-colors placeholder:text-zinc-400 text-black"
                   />
                 </div>
                 <button
@@ -320,11 +320,11 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                 </button>
               </form>
 
-              <div className="mt-4 pt-3 text-center">
+              <div className="mt-2 pt-2 text-center">
                 {authView === 'login' ? (
-                  <p className="text-xs text-zinc-600 font-light">
+                  <p className="text-sm text-black font-medium">
                     New to OpenTheDoorz?{' '}
-                    <button onClick={() => setAuthView('register')} className="text-black font-bold hover:underline">
+                    <button onClick={() => setAuthView('register')} className="text-black font-bold underline">
                       Register
                     </button>
                   </p>

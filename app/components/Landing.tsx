@@ -37,7 +37,7 @@ const Landing: React.FC = () => {
       <section className="px-6 max-w-7xl mx-auto flex flex-col justify-start pt-2 min-h-[70vh]">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-4">
           <div className="order-1">
-            <div className="inline-block px-3 py-1 border border-white/20 text-[10px] uppercase tracking-[0.3em] text-zinc-300 mb-4 animate-pulse">
+            <div className="inline-block px-3 py-1 border border-gray-200 text-[10px] uppercase tracking-[0.3em] text-zinc-500 mb-4 animate-pulse">
               Universal Web3 SDK v1.0
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-[0.95]">
@@ -113,7 +113,7 @@ const Landing: React.FC = () => {
       </section>
 
       {/* Features Grid */}
-      <section className="px-6 max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 mt-12">
+      <section className="px-6 max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6 bg-white mt-12 border border-gray-100 rounded-lg">
         <FeatureCard 
           icon={<Shield size={24} />} 
           title="Serverless Identity" 
@@ -138,11 +138,11 @@ const Landing: React.FC = () => {
 
       {/* Code Preview Section */}
       <section className="px-6 max-w-5xl mx-auto mt-40">
-        <div className="border border-white/10 p-1">
-          <div className="bg-zinc-900/50 p-6 md:p-12 border border-white/10">
-            <h2 className="text-3xl font-bold tracking-tight mb-6 uppercase tracking-tighter text-white">INTEGRATE IN MINUTES</h2>
-            <div className="bg-black border border-white/5 rounded p-4 font-mono text-sm overflow-x-auto">
-              <pre className="text-zinc-300">
+            <div className="border border-gray-100 p-1">
+          <div className="bg-gray-50 p-6 md:p-12 border border-gray-100 rounded">
+            <h2 className="text-3xl font-bold tracking-tight mb-6 uppercase tracking-tighter text-black">INTEGRATE IN MINUTES</h2>
+            <div className="bg-gray-100 border border-gray-100 rounded p-4 font-mono text-sm overflow-x-auto">
+              <pre className="text-zinc-800">
                 <code>{`// Initialize OpenTheDoorz
 import { DoorzProvider } from '@openthedoorz/sdk';
 
@@ -167,10 +167,10 @@ function App() {
 };
 
 const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; desc: string }> = ({ icon, title, desc }) => (
-  <div className="bg-black p-8 group hover:bg-zinc-900 transition-colors">
-    <div className="mb-6 text-zinc-300 group-hover:text-white transition-colors">{icon}</div>
-    <h3 className="text-lg font-bold mb-3 uppercase tracking-wider text-white">{title}</h3>
-    <p className="text-sm text-zinc-300 leading-relaxed">{desc}</p>
+  <div className="bg-white p-8 group hover:bg-zinc-50 transition-colors border border-gray-100">
+    <div className="mb-6 text-zinc-700 group-hover:text-black transition-colors">{icon}</div>
+    <h3 className="text-lg font-bold mb-3 uppercase tracking-wider text-black">{title}</h3>
+    <p className="text-sm text-zinc-600 leading-relaxed">{desc}</p>
   </div>
 );
 

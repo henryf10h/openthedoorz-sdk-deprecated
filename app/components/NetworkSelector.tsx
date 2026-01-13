@@ -7,14 +7,14 @@ export default function NetworkSelector() {
   const { network } = useNetwork();
 
   return (
-    <div className="border border-white/10 bg-black rounded-xl shadow-[0_0_100px_rgba(255,255,255,0.05)] p-4">
+    <div className="border border-gray-200 bg-white rounded-xl shadow-sm p-4">
       {/* Header */}
       <div className="mb-4">
         <div className="flex items-center gap-2 mb-1">
-          <Globe size={14} className="text-white" />
-          <h3 className="text-xs font-bold text-white uppercase tracking-widest">Blockchain Network</h3>
+          <Globe size={14} className="text-zinc-700" />
+          <h3 className="text-xs font-bold text-black uppercase tracking-widest">Blockchain Network</h3>
         </div>
-        <p className="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Starknet</p>
+        <p className="text-[10px] text-zinc-600 uppercase tracking-widest font-bold">Starknet</p>
       </div>
 
       {/* Mainnet Only Display */}
@@ -31,10 +31,10 @@ export default function NetworkSelector() {
       </div>
 
       {/* Network Info */}
-      <div className="pt-3 border-t border-white/10">
+      <div className="pt-3 border-t border-gray-100">
         <div className="flex items-start gap-2 text-[10px]">
           <AlertCircle size={14} className="flex-shrink-0 mt-0.5 text-orange-400" />
-          <p className="text-zinc-400 leading-relaxed uppercase tracking-widest font-bold">
+          <p className="text-zinc-600 leading-relaxed uppercase tracking-widest font-bold">
             ⚠️ Real network. Requires tokens with economic value
           </p>
         </div>
