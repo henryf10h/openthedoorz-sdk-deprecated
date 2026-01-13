@@ -6,6 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <head>
+        <link rel="icon" href="/favicon.svg" />
         {/* Run as early as possible to strip extension-injected attributes before React hydrates */}
         <Script id="pre-hydration-cleanup" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: `
           (function(){
@@ -22,6 +23,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 }
               }
             } catch (e) { console && console.warn && console.warn('head pre-hydration cleanup failed', e); }
+          })();
+        ` }} />
+        {/* Set default theme to light before hydration; allow stored preference */}
+        <Script id="set-theme" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            try {
+              var t = localStorage.getItem('theme');
+              if (t === 'dark') document.documentElement.classList.add('dark');
+              else document.documentElement.classList.remove('dark');
+            } catch(e){}
           })();
         ` }} />
       </head>

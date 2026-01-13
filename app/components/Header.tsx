@@ -9,19 +9,19 @@ interface HeaderProps {
   onOpenWallet: () => void;
 }
 
+import ThemeToggle from './ThemeToggle';
+
 const Header: React.FC<HeaderProps> = ({ onOpenWallet }) => {
   const pathname = usePathname();
   const { network } = useNetwork();
   
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-black/90 backdrop-blur-md border-b border-black/5 dark:border-white/10">
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-xs">
-            OTD
-          </div>
-          <Link href="/" className="text-sm font-bold tracking-tight hover:opacity-80 transition-opacity">
-            OPEN THE DOORZ
+          <Link href="/" className="flex items-center gap-3">
+            <img src="/docs/OpenTheDoorz%20-%20Logotype%20(1).png" alt="OpenTheDoorz" className="h-8 w-auto object-contain" />
+            <span className="text-sm font-bold tracking-tight hover:opacity-80 transition-opacity text-black dark:text-white">OPEN THE DOORZ</span>
           </Link>
           <span className={`px-2 py-0.5 border text-[8px] font-bold uppercase tracking-widest ${
             network === 'MAINNET' 
@@ -33,6 +33,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenWallet }) => {
         </div>
         
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <Link
             href="https://openthedoorz.gitbook.io/open-the-doorz/"
             target="_blank"

@@ -40,14 +40,14 @@ const Landing: React.FC = () => {
             <div className="inline-block px-3 py-1 border border-white/20 text-[10px] uppercase tracking-[0.3em] text-zinc-300 mb-4 animate-pulse">
               Universal Web3 SDK v1.0
             </div>
-            <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 leading-[0.9]">
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-[0.95]">
               <span className="text-white">
-                SERVERLESS <br /> W3 SDK.
+                La Infraestructura DeFI de préstamos
+                <br />que toda institución necesita
               </span>
             </h1>
             <p className="text-xl text-zinc-300 max-w-xl font-light leading-relaxed">
-              Unlock the full potential of Web3 with a single line of code. 
-              OpenTheDoorz provides social login, encrypted cloud storage, and high-speed execution—completely serverless.
+              Unlock the full potential of Web3 with a single line of code. OpenTheDoorz provides social login, encrypted cloud storage, y servicios DeFI.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-6">
@@ -109,36 +109,7 @@ const Landing: React.FC = () => {
           </div>
         </div>
 
-        {/* Powered By Infinite Carousel */}
-        <div className="w-full mt-4 py-8 border-t border-white/5 overflow-hidden">
-          <div className="max-w-7xl mx-auto mb-6 text-center">
-            <span className="text-[9px] uppercase tracking-[0.6em] text-zinc-300 font-bold">Universal Integration Layer</span>
-          </div>
-          
-          <div className="relative">
-            {/* Masking Gradients */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
-            
-            <div className="animate-scroll">
-              {carouselLogos.map((logo, index) => (
-                <div 
-                  key={index} 
-                  className="relative group px-6 md:px-16 flex items-center justify-center min-w-[140px] md:min-w-[200px]"
-                >
-                  {/* Halo Glow Effect */}
-                  <div className="absolute inset-0 bg-white/10 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 scale-[2.5] z-0"></div>
-                  
-                  <img 
-                    src={logo.src} 
-                    alt={logo.alt} 
-                    className={`${logo.class} relative z-10 transition-all duration-500 hover:scale-110 active:scale-95 object-contain`}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* Carousel removed per design update */}
       </section>
 
       {/* Features Grid */}
