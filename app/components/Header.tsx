@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenWallet }) => {
           </Link>
           <button 
             onClick={onOpenWallet}
-            className="px-6 py-2 bg-white text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-200 transition-all"
+            className="px-6 py-2 bg-[#ABDEC2] text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-[#96d1b0] transition-all rounded-sm shadow-md hover:shadow-lg"
           >
             WALLET
           </button>

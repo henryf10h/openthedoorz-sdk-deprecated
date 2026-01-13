@@ -37,7 +37,7 @@ const Landing: React.FC = () => {
       <section className="px-6 max-w-7xl mx-auto flex flex-col justify-start pt-2 min-h-[70vh]">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-4">
           <div className="order-1">
-            <div className="inline-block px-3 py-1 border border-gray-200 text-[10px] uppercase tracking-[0.3em] text-zinc-500 mb-4 animate-pulse">
+            <div className="inline-block px-3 py-1 border border-[#ABDEC2]/50 bg-[#ABDEC2]/10 text-[10px] uppercase tracking-[0.3em] text-[#5a9975] mb-4 animate-pulse">
               Universal Web3 SDK v1.0
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-[0.95]">
