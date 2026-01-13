@@ -16,17 +16,10 @@ const ThemeToggle: React.FC = () => {
     }
   }, []);
 
-  const toggle = () => {
-    const next = theme === 'light' ? 'dark' : 'light';
-    setTheme(next);
-    try { localStorage.setItem('theme', next); } catch(e){}
-    if (next === 'dark') document.documentElement.classList.add('dark');
-    else document.documentElement.classList.remove('dark');
-  };
-
+  // Theme toggle intentionally disabled — site enforces light theme
   return (
-    <button onClick={toggle} aria-label="Toggle theme" className="px-3 py-1 rounded-md bg-black/5 dark:bg-white/5 text-sm">
-      {theme === 'light' ? '🌞' : '🌙'}
+    <button aria-label="Theme (light)" className="px-3 py-1 rounded-md bg-gray-100 text-sm text-black cursor-default" disabled>
+      🌞
     </button>
   );
 };

@@ -40,21 +40,21 @@ export default function LoginPage() {
   const handleSubmit = isSignUp ? handleSignUp : handleSignIn;
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black px-4 py-12 sm:px-6 lg:px-8">
+    <div className="flex min-h-screen items-center justify-center bg-white px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         {/* Logo */}
         <div className="text-center">
           <div className="w-12 h-12 bg-white text-black flex items-center justify-center font-bold text-lg rounded mx-auto mb-4">OTD</div>
-          <h1 className="text-4xl font-extrabold tracking-tighter text-white mb-2">OPENTHEDOORZ</h1>
-          <p className="text-sm text-zinc-400 uppercase tracking-widest font-bold">Firebase Auth</p>
+          <h1 className="text-4xl font-extrabold tracking-tighter text-black mb-2">OPENTHEDOORZ</h1>
+          <p className="text-sm text-zinc-600 uppercase tracking-widest font-bold">Firebase Auth</p>
         </div>
 
         {/* Form Container */}
-        <div className="border border-white/10 bg-black rounded-xl p-8 shadow-[0_0_100px_rgba(255,255,255,0.05)]">
-          <h2 className="text-center text-2xl font-bold tracking-tight text-white mb-2">
+        <div className="border border-gray-200 bg-white rounded-xl p-8 shadow-sm">
+          <h2 className="text-center text-2xl font-bold tracking-tight text-black mb-2">
             {isSignUp ? 'Crear Cuenta' : 'Iniciar Sesión'}
           </h2>
-          <p className="text-center text-sm text-zinc-400 uppercase tracking-widest font-bold mb-8">
+          <p className="text-center text-sm text-zinc-600 uppercase tracking-widest font-bold mb-8">
             Accede a tu ecosistema Web3
           </p>
 
@@ -69,7 +69,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-xs font-bold text-white uppercase tracking-widest mb-2">
+              <label htmlFor="email" className="block text-xs font-bold text-black uppercase tracking-widest mb-2">
                 Email
               </label>
               <input
@@ -78,14 +78,14 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-zinc-500 focus:bg-white/10 focus:border-white/20 focus:outline-none transition-all text-sm"
+                className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-black placeholder-zinc-400 focus:bg-white focus:border-gray-300 focus:outline-none transition-all text-sm"
                 placeholder="tu@email.com"
               />
             </div>
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-xs font-bold text-white uppercase tracking-widest mb-2">
+              <label htmlFor="password" className="block text-xs font-bold text-black uppercase tracking-widest mb-2">
                 Contraseña
               </label>
               <input
@@ -94,7 +94,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-zinc-500 focus:bg-white/10 focus:border-white/20 focus:outline-none transition-all text-sm"
+                className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-black placeholder-zinc-400 focus:bg-white focus:border-gray-300 focus:outline-none transition-all text-sm"
                 placeholder="••••••••"
               />
             </div>
@@ -116,10 +116,10 @@ export default function LoginPage() {
               onClick={() => {
                 setIsSignUp(!isSignUp);
               }}
-              className="text-sm text-zinc-400 hover:text-white transition-colors uppercase tracking-widest font-bold"
+              className="text-sm text-zinc-600 hover:text-black transition-colors uppercase tracking-widest font-bold"
             >
               {isSignUp ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}{' '}
-              <span className="text-white underline">{isSignUp ? 'Inicia sesión' : 'Regístrate'}</span>
+              <span className="text-black underline">{isSignUp ? 'Inicia sesión' : 'Regístrate'}</span>
             </button>
           </div>
         </div>
