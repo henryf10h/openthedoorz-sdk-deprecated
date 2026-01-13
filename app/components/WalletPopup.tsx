@@ -384,7 +384,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
                     {/* Fila 2: Balance + Porcentaje con Toggle */}
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2">""
                           <div className="text-4xl font-bold text-black">
                             {isValueVisible ? `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '••••••'}
                           </div>
