@@ -1101,7 +1101,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-white border-t border-black/5 flex items-center justify-between text-[10px] text-zinc-600 uppercase tracking-widest font-bold shrink-0 dark:bg-zinc-950 dark:border-white/10 dark:text-zinc-300">
+        <div className="p-4 bg-white border-t border-black/5 flex items-center justify-between text-[10px] text-zinc-600 uppercase tracking-widest font-bold shrink-0">
           <div>Product by Reflecter Labs</div>
           <div>V0.0.1</div>
         </div>

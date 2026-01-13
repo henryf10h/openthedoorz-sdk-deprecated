@@ -9,14 +9,14 @@ interface HeaderProps {
   onOpenWallet: () => void;
 }
 
-import ThemeToggle from './ThemeToggle';
+// ThemeToggle removed — site enforces a single light theme
 
 const Header: React.FC<HeaderProps> = ({ onOpenWallet }) => {
   const pathname = usePathname();
   const { network } = useNetwork();
   
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-black/90 backdrop-blur-md border-b border-black/5 dark:border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-black/5">
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center">
@@ -32,7 +32,6 @@ const Header: React.FC<HeaderProps> = ({ onOpenWallet }) => {
         </div>
         
         <div className="flex items-center gap-4">
-          <ThemeToggle />
           <Link
             href="https://openthedoorz.gitbook.io/open-the-doorz/"
             target="_blank"

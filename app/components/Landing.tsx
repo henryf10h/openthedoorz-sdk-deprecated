@@ -41,12 +41,12 @@ const Landing: React.FC = () => {
               Universal Web3 SDK v1.0
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-[0.95]">
-              <span className="text-black dark:text-white">
+              <span className="text-black">
                 La Infraestructura DeFI de préstamos
                 <br />que toda institución necesita
               </span>
             </h1>
-            <p className="text-xl text-zinc-700 dark:text-zinc-300 max-w-xl font-light leading-relaxed">
+            <p className="text-xl text-zinc-700 max-w-xl font-light leading-relaxed">
               Unlock the full potential of Web3 with a single line of code. OpenTheDoorz provides social login, encrypted cloud storage, y servicios DeFI.
             </p>
 
@@ -55,7 +55,7 @@ const Landing: React.FC = () => {
                 href="https://openthedoorz.gitbook.io/open-the-doorz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-black text-white dark:bg-white dark:text-black text-[10px] font-black uppercase tracking-[0.2em] hover:opacity-90 transition-all flex items-center gap-2"
+                className="px-6 py-3 bg-black text-white text-[10px] font-black uppercase tracking-[0.2em] hover:opacity-90 transition-all flex items-center gap-2"
               >
                 View Documentation
               </Link>
@@ -63,7 +63,7 @@ const Landing: React.FC = () => {
                 href="https://www.reflecterlabs.xyz/start-project"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-black/10 text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-black/5 transition-all flex items-center gap-2 dark:border-white/10 dark:text-white"
+                className="px-6 py-3 border border-black/10 text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-black/5 transition-all flex items-center gap-2"
               >
                 Start Project
               </Link>
@@ -72,35 +72,35 @@ const Landing: React.FC = () => {
 
           {/* Wallet Preview in Hero - Now visible on mobile too */}
           <div className="relative order-2 block mt-12 lg:mt-0">
-            <div className="absolute -inset-20 bg-white/5 blur-[120px] rounded-full pointer-events-none"></div>
-            <div className="relative z-10 border border-white/10 bg-black w-full max-w-[380px] mx-auto shadow-[0_0_100px_rgba(255,255,255,0.05)] lg:rotate-1 hover:rotate-0 transition-transform duration-700">
-              <div className="p-4 border-b border-white/10 flex items-center justify-between">
+            {/* Simplified light-themed wallet preview */}
+            <div className="relative z-10 border border-black/5 bg-white w-full max-w-[380px] mx-auto shadow-md lg:rotate-1 hover:rotate-0 transition-transform duration-700">
+              <div className="p-4 border-b border-black/5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-xs">OTD</div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Preview Mode</span>
+                  <div className="w-8 h-8 bg-black text-white flex items-center justify-center font-bold text-xs">OTD</div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-700">Preview Mode</span>
                 </div>
               </div>
               <div className="p-6">
-                <div className="bg-zinc-900/40 border border-white/10 mb-4 flex flex-col relative overflow-hidden">
+                <div className="bg-white border border-black/5 mb-4 flex flex-col relative overflow-hidden">
                   <div className="p-4">
-                    <div className="text-[8px] uppercase text-zinc-300 font-bold tracking-widest mb-1">Active Wallet</div>
-                    <div className="font-mono text-[10px] text-zinc-400 mb-2 tracking-tighter">0x0471...952a</div>
-                    <div className="text-2xl font-extrabold tracking-tighter text-white">$5,352.60</div>
+                    <div className="text-[8px] uppercase text-zinc-700 font-bold tracking-widest mb-1">Active Wallet</div>
+                    <div className="font-mono text-[10px] text-zinc-600 mb-2 tracking-tighter">0x0471...952a</div>
+                    <div className="text-2xl font-extrabold tracking-tighter text-black">$5,352.60</div>
                   </div>
-                  <div className="grid grid-cols-2 border-t border-white/10 bg-white/5">
-                    <div className="py-2.5 flex items-center justify-center gap-1.5 border-r border-white/10 text-[8px] uppercase font-bold tracking-widest text-zinc-300">
+                  <div className="grid grid-cols-2 border-t border-black/5 bg-white">
+                    <div className="py-2.5 flex items-center justify-center gap-1.5 border-r border-black/5 text-[8px] uppercase font-bold tracking-widest text-zinc-700">
                       <ArrowUp size={10} /> Send
                     </div>
-                    <div className="py-2.5 flex items-center justify-center gap-1.5 text-[8px] uppercase font-bold tracking-widest text-zinc-300">
+                    <div className="py-2.5 flex items-center justify-center gap-1.5 text-[8px] uppercase font-bold tracking-widest text-zinc-700">
                       <ArrowDown size={10} /> Receive
                     </div>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-1.5 mb-6">
                   {['Storage', 'Lending', 'Staging'].map((label, idx) => (
-                    <div key={label} className="flex flex-col items-center gap-1 p-2 border border-white/5 bg-zinc-950/50">
-                      {idx === 0 ? <Database size={12} className="text-zinc-300" /> : idx === 1 ? <TrendingUp size={12} className="text-zinc-300" /> : <Layers size={12} className="text-zinc-300" />}
-                      <span className="text-[7px] uppercase font-bold tracking-widest text-zinc-300">{label}</span>
+                    <div key={label} className="flex flex-col items-center gap-1 p-2 border border-black/5 bg-white">
+                      {idx === 0 ? <Database size={12} className="text-zinc-700" /> : idx === 1 ? <TrendingUp size={12} className="text-zinc-700" /> : <Layers size={12} className="text-zinc-700" />}
+                      <span className="text-[7px] uppercase font-bold tracking-widest text-zinc-700">{label}</span>
                     </div>
                   ))}
                 </div>

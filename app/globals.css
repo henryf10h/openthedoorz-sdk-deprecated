@@ -23,11 +23,7 @@ html {
   color: #000000 !important;
 }
 
-html.dark {
-  background-color: #000000 !important;
-  color: #e6e6e6 !important;
-}
-
+/* Dark mode removed — force light-only theme */
 body {
   background-color: transparent !important;
   color: inherit !important;
