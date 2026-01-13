@@ -596,13 +596,13 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                   <div className="space-y-6">
                     {/* Network Section */}
                     <div>
-                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-white mb-4">Network</h3>
+                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-black mb-4">Network</h3>
                       <NetworkSelector />
                     </div>
 
                     {/* View Address Activity Button */}
                     <div>
-                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-white mb-4">Explorer</h3>
+                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-black mb-4">Explorer</h3>
                       <button
                         onClick={() => {
                           if (wallet?.publicKey) {
@@ -610,7 +610,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                           }
                         }}
                         disabled={!wallet?.publicKey}
-                        className="w-full flex items-center justify-center gap-2 py-4 bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-50 disabled:hover:bg-white/5 transition-all text-white text-xs uppercase tracking-widest font-bold"
+                        className="w-full flex items-center justify-center gap-2 py-4 bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-50 disabled:hover:bg-white/5 transition-all text-black text-xs uppercase tracking-widest font-bold"
                       >
                         <ExternalLink size={14} />
                         View Address Activity
@@ -635,7 +635,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
                     {/* Profile Section */}
                     <div>
-                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-white mb-4">Profile</h3>
+                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-black mb-4">Profile</h3>
                       <div className="p-4 bg-white/5 border border-white/10 space-y-4">
                         <div className="grid grid-cols-2 gap-3">
                           <div className="space-y-1">
