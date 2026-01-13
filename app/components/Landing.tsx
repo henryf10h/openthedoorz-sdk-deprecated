@@ -41,12 +41,12 @@ const Landing: React.FC = () => {
               Universal Web3 SDK v1.0
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-[0.95]">
-              <span className="text-white">
+              <span className="text-black dark:text-white">
                 La Infraestructura DeFI de préstamos
                 <br />que toda institución necesita
               </span>
             </h1>
-            <p className="text-xl text-zinc-300 max-w-xl font-light leading-relaxed">
+            <p className="text-xl text-zinc-700 dark:text-zinc-300 max-w-xl font-light leading-relaxed">
               Unlock the full potential of Web3 with a single line of code. OpenTheDoorz provides social login, encrypted cloud storage, y servicios DeFI.
             </p>
 
@@ -55,7 +55,7 @@ const Landing: React.FC = () => {
                 href="https://openthedoorz.gitbook.io/open-the-doorz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-zinc-200 transition-all flex items-center gap-2"
+                className="px-6 py-3 bg-black text-white dark:bg-white dark:text-black text-[10px] font-black uppercase tracking-[0.2em] hover:opacity-90 transition-all flex items-center gap-2"
               >
                 View Documentation
               </Link>

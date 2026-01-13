@@ -27,7 +27,10 @@ export function useTokenPrices() {
                     'https://api.coingecko.com/api/v3/simple/price?ids=ethereum,starknet,usd-coin&vs_currencies=usd'
                 );
 
-                if (!response.ok) throw new Error('Failed to fetch prices');
+                if (!response.ok) {
+                    const text = await response.text().catch(() => '');
+                    throw new Error(`Failed to fetch prices: ${response.status} ${response.statusText} ${text}`);
+                }
 
                 const data = await response.json();
 
