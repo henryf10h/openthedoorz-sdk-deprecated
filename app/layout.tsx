@@ -2,6 +2,14 @@ import './globals.css';
 import ChipiProviders from './ChipiProviders';
 import Script from 'next/script';
 
+export const metadata = {
+  title: 'OpenTheDoorz - Blockchain Access Portal',
+  description: 'Access blockchain services and manage your digital assets securely',
+  icons: {
+    icon: '/favicon.svg',
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">

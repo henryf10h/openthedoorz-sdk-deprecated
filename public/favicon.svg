@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background -->
+  <rect width="64" height="64" fill="#ffffff" rx="12"/>
+  
+  <!-- Left door (open) -->
+  <g transform="translate(8, 12)">
+    <!-- Door frame -->
+    <rect x="0" y="0" width="20" height="40" fill="none" stroke="#1f2937" stroke-width="1.5"/>
+    <!-- Door (rotated open) -->
+    <g transform="translate(10, 20) rotate(-30)">
+      <rect x="-10" y="-20" width="20" height="40" fill="#3b82f6" opacity="0.8" stroke="#1f2937" stroke-width="1.5"/>
+      <!-- Door handle -->
+      <circle cx="8" cy="0" r="1.5" fill="#f59e0b"/>
+    </g>
+  </g>
+  
+  <!-- Right door (open) -->
+  <g transform="translate(36, 12)">
+    <!-- Door frame -->
+    <rect x="0" y="0" width="20" height="40" fill="none" stroke="#1f2937" stroke-width="1.5"/>
+    <!-- Door (rotated open opposite direction) -->
+    <g transform="translate(10, 20) rotate(30)">
+      <rect x="-10" y="-20" width="20" height="40" fill="#3b82f6" opacity="0.8" stroke="#1f2937" stroke-width="1.5"/>
+      <!-- Door handle -->
+      <circle cx="-8" cy="0" r="1.5" fill="#f59e0b"/>
+    </g>
+  </g>
+  
+  <!-- Center line (doorway) -->
+  <line x1="32" y1="12" x2="32" y2="52" stroke="#1f2937" stroke-width="1"/>
+  
+  <!-- Welcome text/icon -->
+  <path d="M 32 54 L 28 58 L 32 60 L 36 58 Z" fill="#10b981" opacity="0.8"/>
+</svg>
