@@ -71,7 +71,7 @@ export default function DashboardPage() {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Left/Center: Main Feature Area */}
           <div className="lg:col-span-2">
-            !walletSession ? (
+            {!walletSession ? (
               <div className="border border-gray-200 bg-white p-12 rounded-xl shadow-sm min-h-[500px] flex items-center justify-center">
                 <div className="text-center">
                   <p className="text-zinc-500 text-sm uppercase tracking-widest mb-2">Paso 1</p>
