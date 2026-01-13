@@ -216,7 +216,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
     <>
       {/* Backdrop Overlay */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100]"
         onClick={onClose}
       />
 
@@ -230,14 +230,14 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
       {/* Modal */}
       <div
-        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[110] w-full max-w-[380px] h-[600px] bg-black border border-white/20 shadow-[0_0_100px_rgba(255,255,255,0.1)] flex flex-col transition-all duration-300 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
+        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[110] w-full max-w-[380px] h-[600px] bg-white border border-gray-200 shadow-sm flex flex-col transition-all duration-300 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
           }`}
       >
         {/* Header */}
-        <div className="p-4 border-b border-white/10 flex items-center justify-between bg-black shrink-0">
+        <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-white shrink-0">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-xs">OTD</div>
-            <span className="text-xs font-bold uppercase tracking-widest text-white">
+            <span className="text-xs font-bold uppercase tracking-widest text-black">
               {profile.firstName ? `Hola ${profile.firstName} 👋` : 'Open The Doorz'}
             </span>
           </div>
@@ -262,7 +262,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto overflow-x-hidden bg-black custom-scrollbar">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden bg-white custom-scrollbar">
           {!user ? (
             /* AUTH VIEW */
             <div className="p-8 flex flex-col animate-in fade-in duration-500">
@@ -270,10 +270,10 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                 <div className="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center mb-6 text-zinc-300">
                   {authView === 'register' ? <Sparkles size={32} /> : <Lock size={32} />}
                 </div>
-                <h3 className="text-xl font-bold mb-2 uppercase tracking-tight text-white">
+                <h3 className="text-xl font-bold mb-2 uppercase tracking-tight text-black">
                   {authView === 'login' ? 'Welcome Back' : 'Join the Bridge'}
                 </h3>
-                <p className="text-sm text-zinc-300 font-light">
+                <p className="text-sm text-zinc-600 font-light">
                   {authView === 'login' ? 'Access your Starknet assets' : 'Create a secure non-custodial account'}
                 </p>
               </div>
@@ -286,14 +286,14 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
               <form onSubmit={handleAuthAction} className="space-y-4 flex-1">
                 <div className="space-y-1">
-                  <label className="text-[10px] uppercase tracking-widest text-zinc-300 font-bold ml-1">Email</label>
+                  <label className="text-[10px] uppercase tracking-widest text-zinc-600 font-bold ml-1">Email</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
-                    className="w-full bg-zinc-950 border border-white/10 p-4 text-sm focus:border-white focus:outline-none transition-colors placeholder:text-zinc-400 text-white"
+                    className="w-full bg-gray-50 border border-gray-200 p-4 text-sm focus:border-gray-300 focus:outline-none transition-colors placeholder:text-zinc-400 text-black"
                   />
                 </div>
                 <div className="space-y-1">
@@ -310,7 +310,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-4 font-bold uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50 mt-4 bg-white text-black hover:bg-zinc-200"
+                  className="w-full py-4 font-bold uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50 mt-4 bg-black text-white hover:opacity-90"
                 >
                   {isLoading ? (
                     <div className="w-4 h-4 border-2 border-black border-t-transparent animate-spin rounded-full"></div>
@@ -320,18 +320,18 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                 </button>
               </form>
 
-              <div className="mt-8 pt-6 border-t border-white/5 text-center">
+              <div className="mt-4 pt-3 text-center">
                 {authView === 'login' ? (
-                  <p className="text-xs text-zinc-300 font-light">
+                  <p className="text-xs text-zinc-600 font-light">
                     New to OpenTheDoorz?{' '}
-                    <button onClick={() => setAuthView('register')} className="text-white font-bold hover:underline">
+                    <button onClick={() => setAuthView('register')} className="text-black font-bold hover:underline">
                       Register
                     </button>
                   </p>
                 ) : (
                   <button
                     onClick={() => setAuthView('login')}
-                    className="flex items-center justify-center gap-2 text-xs text-zinc-300 hover:text-white transition-colors mx-auto"
+                    className="flex items-center justify-center gap-2 text-xs text-zinc-600 hover:text-black transition-colors mx-auto"
                   >
                     <ChevronLeft size={14} /> Back to Sign In
                   </button>
@@ -497,7 +497,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                   />
                                 </div>
                                 <div>
-                                  <div className="text-sm font-bold text-white">Ethereum</div>
+                                                      className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
                                   <div className="text-xs text-zinc-400">
                                     {ethBalance} ETH
                                   </div>
@@ -523,7 +523,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                   />
                                 </div>
                                 <div>
-                                  <div className="text-sm font-bold text-white">Starknet</div>
+                                                      className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
                                   <div className="text-xs text-zinc-400">
                                     {strkBalance} STRK
                                   </div>
@@ -621,15 +621,15 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
                     {/* Active Session */}
                     <div>
-                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-white mb-4">Active Session</h3>
-                      <div className="p-4 bg-white/5 border border-white/10">
+                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-black mb-4">Active Session</h3>
+                      <div className="p-4 bg-gray-50 border border-gray-200">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center">
+                          <div className="w-8 h-8 bg-zinc-200 rounded-full flex items-center justify-center">
                             <span className="text-xs">👤</span>
                           </div>
                           <div>
-                            <div className="text-sm font-bold text-white">{user?.email}</div>
-                            <div className="text-xs text-zinc-400">Connected via OTD SDK</div>
+                            <div className="text-sm font-bold text-black">{user?.email}</div>
+                            <div className="text-xs text-zinc-500">Connected via OTD SDK</div>
                           </div>
                         </div>
                       </div>
@@ -669,7 +669,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                             value={profile.city}
                             onChange={(e) => setProfile({ ...profile, city: e.target.value })}
                             placeholder="City"
-                            className="w-full bg-black/40 border border-white/10 p-2 text-xs focus:border-white focus:outline-none text-white transition-colors"
+                            className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
                           />
                         </div>
 
@@ -681,7 +681,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                               value={profile.province}
                               onChange={(e) => setProfile({ ...profile, province: e.target.value })}
                               placeholder="Provincia"
-                              className="w-full bg-black/40 border border-white/10 p-2 text-xs focus:border-white focus:outline-none text-white transition-colors"
+                              className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
                             />
                           </div>
                           <div className="space-y-1">
@@ -691,7 +691,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                               value={profile.postalCode}
                               onChange={(e) => setProfile({ ...profile, postalCode: e.target.value })}
                               placeholder="C.P."
-                              className="w-full bg-black/40 border border-white/10 p-2 text-xs focus:border-white focus:outline-none text-white transition-colors"
+                              className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
                             />
                           </div>
                         </div>
@@ -750,7 +750,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
                       {/* Dropdown Menu - Vista Expandida */}
                       {isTokenDropdownOpen && (
-                        <div className="absolute top-full left-0 right-0 mt-1 bg-black border border-white/10 z-50">
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 z-50">
                           {(['ETH', 'STRK', 'USDC'] as const).map((token) => (
                             <button
                               key={token}
@@ -758,7 +758,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                 setSelectedToken(token);
                                 setIsTokenDropdownOpen(false);
                               }}
-                              className="w-full p-4 hover:bg-white/5 transition-colors flex items-center justify-between border-b border-white/5 last:border-b-0"
+                              className="w-full p-4 hover:bg-gray-50 transition-colors flex items-center justify-between border-b border-gray-100 last:border-b-0"
                             >
                               <div className="flex items-center gap-3">
                                 <div className="w-6 h-6 flex items-center justify-center">
@@ -770,8 +770,8 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                   />
                                 </div>
                                 <div className="text-left">
-                                  <div className="text-sm font-bold text-white">{token}</div>
-                                  <div className="text-xs text-zinc-500">{tokenData[token].name}</div>
+                                  <div className="text-sm font-bold text-black">{token}</div>
+                                  <div className="text-xs text-zinc-600">{tokenData[token].name}</div>
                                 </div>
                               </div>
                               <span className="text-sm text-zinc-400">
