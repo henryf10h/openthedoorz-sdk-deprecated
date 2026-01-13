@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 
 // Static response with fallback prices for CoinGecko
 // Routes cannot be dynamic when using `output: export` for static HTML export
+// Force static generation for compatibility with static HTML export
+export const dynamic = 'force-static';
+export const revalidate = 60;
 
 export async function GET() {
     const url = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum,starknet,usd-coin&vs_currencies=usd';
