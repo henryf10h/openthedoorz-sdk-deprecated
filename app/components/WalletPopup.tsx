@@ -385,9 +385,9 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                     {/* Fila 2: Balance + Porcentaje con Toggle */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="text-4xl font-bold text-white">
-                          {isValueVisible ? `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '••••••'}
-                        </div>
+                          <div className="text-4xl font-bold text-black">
+                            {isValueVisible ? `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '••••••'}
+                          </div>
                         <button
                           onClick={() => setIsValueVisible(!isValueVisible)}
                           className="p-2 text-zinc-500 hover:text-white transition-colors"
@@ -496,15 +496,14 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                     fallback="Ξ"
                                   />
                                 </div>
-                                <div>
-                                                      className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
-                                  <div className="text-xs text-zinc-400">
+                                <div className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors">
+                                  <div className="text-sm font-bold text-black">
                                     {ethBalance} ETH
                                   </div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="text-sm font-bold text-white">
+                                <div className="text-sm font-bold text-black">
                                   ${ethValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                 </div>
                                 <div className="text-[10px] text-zinc-500">
@@ -522,15 +521,14 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                     fallback="S"
                                   />
                                 </div>
-                                <div>
-                                                      className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
-                                  <div className="text-xs text-zinc-400">
+                                <div className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors">
+                                  <div className="text-sm font-bold text-black">
                                     {strkBalance} STRK
                                   </div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="text-sm font-bold text-white">
+                                <div className="text-sm font-bold text-black">
                                   ${strkValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                 </div>
                                 <div className="text-[10px] text-zinc-500">
@@ -549,14 +547,14 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                   />
                                 </div>
                                 <div>
-                                  <div className="text-sm font-bold text-white">USD Coin</div>
+                                  <div className="text-sm font-bold text-black">USD Coin</div>
                                   <div className="text-xs text-zinc-400">
                                     {usdcBalance} USDC
                                   </div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="text-sm font-bold text-white">
+                                <div className="text-sm font-bold text-black">
                                   ${usdcValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                 </div>
                                 <div className="text-[10px] text-zinc-500">
