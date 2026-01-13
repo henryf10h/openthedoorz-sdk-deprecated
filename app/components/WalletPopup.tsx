@@ -264,78 +264,99 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
         {/* Content Area */}
         <div className="flex-1 overflow-y-auto overflow-x-hidden bg-white custom-scrollbar">
           {!user ? (
-            /* AUTH VIEW */
-            <div className="p-8 flex flex-col animate-in fade-in duration-500">
-              <div className="flex flex-col items-center text-center mb-8">
-                <div className="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center mb-6 text-zinc-300">
-                  {authView === 'register' ? <Sparkles size={32} /> : <Lock size={32} />}
-                </div>
-                <h3 className="text-xl font-bold mb-2 uppercase tracking-tight text-black">
-                  {authView === 'login' ? 'Welcome Back' : 'Join the Bridge'}
-                </h3>
-                <p className="text-sm text-zinc-600 font-light">
-                  {authView === 'login' ? 'Access your Starknet assets' : 'Create a secure non-custodial account'}
-                </p>
-              </div>
+            /* AUTH VIEW - Elegant Minimalist Design */
+            <div className="flex items-center justify-center min-h-full p-6 animate-in fade-in duration-500">
+              <div className="w-full max-w-sm">
+                {/* Card Container with subtle shadow and rounded corners */}
+                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100/50">
+                  {/* Header with Logo */}
+                  <div className="p-8 pb-6 text-center border-b border-gray-100">
+                    <img src="/OpenTheDoorz-Logotype-1.png" alt="OpenTheDoorz" className="h-10 mx-auto mb-2 object-contain" />
+                    <h1 className="text-sm font-bold uppercase tracking-[0.3em] text-black mt-6 mb-1">
+                      {authView === 'login' ? 'Initialize' : 'Join'}
+                    </h1>
+                    <p className="text-xs uppercase tracking-[0.15em] text-zinc-500 font-medium">
+                      {authView === 'login' ? 'Access Your Portal' : 'Sanctum of Logic'}
+                    </p>
+                  </div>
 
-              {error && (
-                <div className="mb-4 p-3 bg-red-950/20 border border-red-500/50 text-red-500 text-xs">
-                  {error}
-                </div>
-              )}
+                  {/* Content */}
+                  <div className="p-8">
+                    {error && (
+                      <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded text-red-700 text-xs uppercase tracking-wide font-medium">
+                        {error}
+                      </div>
+                    )}
 
-              <form onSubmit={handleAuthAction} className="space-y-4 flex-1">
-                <div className="space-y-1">
-                  <label className="text-[10px] uppercase tracking-widest text-zinc-600 font-bold ml-1">Email</label>
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@example.com"
-                    className="w-full bg-gray-50 border border-gray-200 p-4 text-sm focus:border-gray-300 focus:outline-none transition-colors placeholder:text-zinc-400 text-black"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] uppercase tracking-widest text-zinc-300 font-bold ml-1">Password</label>
-                  <input
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••"
-                    className="w-full bg-gray-50 border border-gray-200 p-4 text-sm focus:border-gray-300 focus:outline-none transition-colors placeholder:text-zinc-400 text-black"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full py-4 font-bold uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50 mt-4 bg-black text-white hover:opacity-90"
-                >
-                  {isLoading ? (
-                    <div className="w-4 h-4 border-2 border-black border-t-transparent animate-spin rounded-full"></div>
-                  ) : (
-                    authView === 'login' ? 'Sign In' : 'Create Account'
-                  )}
-                </button>
-              </form>
+                    <form onSubmit={handleAuthAction} className="space-y-5">
+                      {/* Identity Field */}
+                      <div className="space-y-2">
+                        <label className="text-[9px] uppercase tracking-[0.2em] text-zinc-700 font-bold block">
+                          Identity
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="name@example.com"
+                          className="w-full px-4 py-3 bg-white border border-gray-300 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:border-black focus:ring-0 transition-colors rounded-lg"
+                        />
+                      </div>
 
-              <div className="mt-2 pt-2 text-center">
-                {authView === 'login' ? (
-                  <p className="text-sm text-black font-medium">
-                    New to OpenTheDoorz?{' '}
-                    <button onClick={() => setAuthView('register')} className="text-black font-bold underline">
-                      Register
-                    </button>
-                  </p>
-                ) : (
-                  <button
-                    onClick={() => setAuthView('login')}
-                    className="flex items-center justify-center gap-2 text-xs text-zinc-600 hover:text-black transition-colors mx-auto"
-                  >
-                    <ChevronLeft size={14} /> Back to Sign In
-                  </button>
-                )}
+                      {/* Cipher Field */}
+                      <div className="space-y-2">
+                        <label className="text-[9px] uppercase tracking-[0.2em] text-zinc-700 font-bold block flex items-center gap-2">
+                          Cipher
+                          <span className="text-[8px] text-gray-400">?</span>
+                        </label>
+                        <input
+                          type="password"
+                          required
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          placeholder="••••••••"
+                          className="w-full px-4 py-3 bg-white border border-gray-300 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:border-black focus:ring-0 transition-colors rounded-lg"
+                        />
+                      </div>
+
+                      {/* Main Action Button */}
+                      <button
+                        type="submit"
+                        disabled={isLoading}
+                        className="w-full py-4 mt-8 font-bold uppercase tracking-[0.15em] text-[11px] transition-all flex items-center justify-center gap-2 disabled:opacity-50 bg-black text-white hover:bg-zinc-900 rounded-lg shadow-lg hover:shadow-xl"
+                      >
+                        {isLoading ? (
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
+                        ) : (
+                          authView === 'login' ? 'Access Sanctum' : 'Create Core'
+                        )}
+                      </button>
+                    </form>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="px-8 py-6 bg-gray-50 border-t border-gray-100 text-center">
+                    {authView === 'login' ? (
+                      <p className="text-[11px] text-gray-600">
+                        New to OpenTheDoorz?{' '}
+                        <button 
+                          onClick={() => setAuthView('register')} 
+                          className="text-black font-bold hover:underline transition-all"
+                        >
+                          Register New Core
+                        </button>
+                      </p>
+                    ) : (
+                      <button
+                        onClick={() => setAuthView('login')}
+                        className="flex items-center justify-center gap-2 text-[11px] text-gray-600 hover:text-black transition-colors mx-auto font-medium"
+                      >
+                        <ChevronLeft size={14} /> Back to Access Sanctum
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           ) : (
