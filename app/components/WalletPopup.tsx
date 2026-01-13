@@ -223,29 +223,28 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
       {/* Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] bg-gray-100/60 backdrop-blur-md"
           onClick={onClose}
         />
       )}
 
       {/* Modal */}
       <div
-        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[110] w-full max-w-[380px] h-[600px] bg-white border border-gray-200 shadow-sm flex flex-col transition-all duration-300 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
+        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[110] w-full max-w-[380px] h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col transition-all duration-300 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
           }`}
       >
         {/* Header */}
-        <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-white shrink-0">
+        <div className="p-4 border-b border-gray-100 flex items-center justify-between bg-white shrink-0 rounded-t-2xl">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-xs">OTD</div>
-            <span className="text-xs font-bold uppercase tracking-widest text-black">
-              {profile.firstName ? `Hola ${profile.firstName} 👋` : 'Open The Doorz'}
+            <span className="text-xs font-medium text-gray-700">
+              {profile.firstName ? `Hola ${profile.firstName} 👋` : ''}
             </span>
           </div>
           <div className="flex items-center gap-1">
             {user && walletView !== 'settings' && (
               <button
                 onClick={() => setWalletView('settings')}
-                className="p-2 text-zinc-300 hover:text-white transition-colors"
+                className="p-2 text-gray-400 hover:text-gray-700 transition-colors rounded-lg hover:bg-gray-100"
                 title="Settings"
               >
                 <Settings size={18} />
@@ -253,7 +252,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
             )}
             <button
               onClick={onClose}
-              className="p-2 text-zinc-500 hover:text-white transition-colors ml-1"
+              className="p-2 text-gray-400 hover:text-gray-700 transition-colors ml-1 rounded-lg hover:bg-gray-100"
               title="Close"
             >
               <X size={18} />
