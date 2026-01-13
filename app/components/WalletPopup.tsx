@@ -216,36 +216,35 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
     <>
       {/* Backdrop Overlay */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100]"
         onClick={onClose}
       />
 
       {/* Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] bg-gray-100/60 backdrop-blur-md"
           onClick={onClose}
         />
       )}
 
       {/* Modal */}
       <div
-        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[110] w-full max-w-[380px] h-[600px] bg-black border border-white/20 shadow-[0_0_100px_rgba(255,255,255,0.1)] flex flex-col transition-all duration-300 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
+        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[110] w-full max-w-[380px] h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col transition-all duration-300 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
           }`}
       >
         {/* Header */}
-        <div className="p-4 border-b border-white/10 flex items-center justify-between bg-black shrink-0">
+        <div className="px-4 py-2 border-b border-gray-100 flex items-center justify-between bg-white shrink-0 rounded-t-2xl">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-xs">OTD</div>
-            <span className="text-xs font-bold uppercase tracking-widest text-white">
-              {profile.firstName ? `Hola ${profile.firstName} 👋` : 'Open The Doorz'}
+            <span className="text-xs font-medium text-gray-700">
+              {profile.firstName ? `Hola ${profile.firstName} 👋` : ''}
             </span>
           </div>
           <div className="flex items-center gap-1">
             {user && walletView !== 'settings' && (
               <button
                 onClick={() => setWalletView('settings')}
-                className="p-2 text-zinc-300 hover:text-white transition-colors"
+                className="p-2 text-gray-400 hover:text-gray-700 transition-colors rounded-lg hover:bg-gray-100"
                 title="Settings"
               >
                 <Settings size={18} />
@@ -253,7 +252,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
             )}
             <button
               onClick={onClose}
-              className="p-2 text-zinc-500 hover:text-white transition-colors ml-1"
+              className="p-2 text-gray-400 hover:text-gray-700 transition-colors ml-1 rounded-lg hover:bg-gray-100"
               title="Close"
             >
               <X size={18} />
@@ -262,80 +261,101 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto overflow-x-hidden bg-black custom-scrollbar">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden bg-white custom-scrollbar">
           {!user ? (
-            /* AUTH VIEW */
-            <div className="p-8 flex flex-col animate-in fade-in duration-500">
-              <div className="flex flex-col items-center text-center mb-8">
-                <div className="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center mb-6 text-zinc-300">
-                  {authView === 'register' ? <Sparkles size={32} /> : <Lock size={32} />}
-                </div>
-                <h3 className="text-xl font-bold mb-2 uppercase tracking-tight text-white">
-                  {authView === 'login' ? 'Welcome Back' : 'Join the Bridge'}
-                </h3>
-                <p className="text-sm text-zinc-300 font-light">
-                  {authView === 'login' ? 'Access your Starknet assets' : 'Create a secure non-custodial account'}
-                </p>
-              </div>
+            /* AUTH VIEW - Elegant Minimalist Design */
+            <div className="flex items-center justify-center min-h-full p-6 animate-in fade-in duration-500">
+              <div className="w-full max-w-sm">
+                {/* Card Container with subtle shadow and rounded corners */}
+                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100/50">
+                  {/* Header with Logo */}
+                  <div className="p-8 pb-6 text-center border-b border-gray-100">
+                    <img src="/OpenTheDoorz-Logotype-1.png" alt="OpenTheDoorz" className="h-10 mx-auto mb-2 object-contain" />
+                    <h1 className="text-sm font-bold uppercase tracking-[0.3em] text-black mt-6 mb-1">
+                      {authView === 'login' ? 'Initialize' : 'Join'}
+                    </h1>
+                    <p className="text-xs uppercase tracking-[0.15em] text-zinc-500 font-medium">
+                      {authView === 'login' ? 'Access Your Portal' : 'Sanctum of Logic'}
+                    </p>
+                  </div>
 
-              {error && (
-                <div className="mb-4 p-3 bg-red-950/20 border border-red-500/50 text-red-500 text-xs">
-                  {error}
-                </div>
-              )}
+                  {/* Content */}
+                  <div className="p-8">
+                    {error && (
+                      <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded text-red-700 text-xs uppercase tracking-wide font-medium">
+                        {error}
+                      </div>
+                    )}
 
-              <form onSubmit={handleAuthAction} className="space-y-4 flex-1">
-                <div className="space-y-1">
-                  <label className="text-[10px] uppercase tracking-widest text-zinc-300 font-bold ml-1">Email</label>
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@example.com"
-                    className="w-full bg-zinc-950 border border-white/10 p-4 text-sm focus:border-white focus:outline-none transition-colors placeholder:text-zinc-400 text-white"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] uppercase tracking-widest text-zinc-300 font-bold ml-1">Password</label>
-                  <input
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••"
-                    className="w-full bg-zinc-950 border border-white/10 p-4 text-sm focus:border-white focus:outline-none transition-colors placeholder:text-zinc-400 text-white"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full py-4 font-bold uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50 mt-4 bg-white text-black hover:bg-zinc-200"
-                >
-                  {isLoading ? (
-                    <div className="w-4 h-4 border-2 border-black border-t-transparent animate-spin rounded-full"></div>
-                  ) : (
-                    authView === 'login' ? 'Sign In' : 'Create Account'
-                  )}
-                </button>
-              </form>
+                    <form onSubmit={handleAuthAction} className="space-y-5">
+                      {/* Identity Field */}
+                      <div className="space-y-2">
+                        <label className="text-[9px] uppercase tracking-[0.2em] text-zinc-700 font-bold block">
+                          Identity
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="name@example.com"
+                          className="w-full px-4 py-3 bg-white border border-gray-300 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:border-black focus:ring-0 transition-colors rounded-lg"
+                        />
+                      </div>
 
-              <div className="mt-8 pt-6 border-t border-white/5 text-center">
-                {authView === 'login' ? (
-                  <p className="text-xs text-zinc-300 font-light">
-                    New to OpenTheDoorz?{' '}
-                    <button onClick={() => setAuthView('register')} className="text-white font-bold hover:underline">
-                      Register
-                    </button>
-                  </p>
-                ) : (
-                  <button
-                    onClick={() => setAuthView('login')}
-                    className="flex items-center justify-center gap-2 text-xs text-zinc-300 hover:text-white transition-colors mx-auto"
-                  >
-                    <ChevronLeft size={14} /> Back to Sign In
-                  </button>
-                )}
+                      {/* Cipher Field */}
+                      <div className="space-y-2">
+                        <label className="text-[9px] uppercase tracking-[0.2em] text-zinc-700 font-bold block flex items-center gap-2">
+                          Cipher
+                          <span className="text-[8px] text-gray-400">?</span>
+                        </label>
+                        <input
+                          type="password"
+                          required
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          placeholder="••••••••"
+                          className="w-full px-4 py-3 bg-white border border-gray-300 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:border-black focus:ring-0 transition-colors rounded-lg"
+                        />
+                      </div>
+
+                      {/* Main Action Button */}
+                      <button
+                        type="submit"
+                        disabled={isLoading}
+                        className="w-full py-4 mt-8 font-bold uppercase tracking-[0.15em] text-[11px] transition-all flex items-center justify-center gap-2 disabled:opacity-50 bg-black text-white hover:bg-zinc-900 rounded-lg shadow-lg hover:shadow-xl"
+                      >
+                        {isLoading ? (
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
+                        ) : (
+                          authView === 'login' ? 'Access Sanctum' : 'Create Core'
+                        )}
+                      </button>
+                    </form>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="px-8 py-6 bg-gray-50 border-t border-gray-100 text-center">
+                    {authView === 'login' ? (
+                      <p className="text-[11px] text-gray-600">
+                        New to OpenTheDoorz?{' '}
+                        <button 
+                          onClick={() => setAuthView('register')} 
+                          className="text-black font-bold hover:underline transition-all"
+                        >
+                          Register New Core
+                        </button>
+                      </p>
+                    ) : (
+                      <button
+                        onClick={() => setAuthView('login')}
+                        className="flex items-center justify-center gap-2 text-[11px] text-gray-600 hover:text-black transition-colors mx-auto font-medium"
+                      >
+                        <ChevronLeft size={14} /> Back to Access Sanctum
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           ) : (
@@ -385,9 +405,9 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                     {/* Fila 2: Balance + Porcentaje con Toggle */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="text-4xl font-bold text-white">
-                          {isValueVisible ? `$${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '••••••'}
-                        </div>
+                          <div className="text-4xl font-bold text-black">
+                            {isValueVisible ? `~ ${totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD` : '••••••'}
+                          </div>
                         <button
                           onClick={() => setIsValueVisible(!isValueVisible)}
                           className="p-2 text-zinc-500 hover:text-white transition-colors"
@@ -419,8 +439,8 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                       onClick={handleInitSend}
                       className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
                     >
-                      <ArrowUp size={16} className="text-white" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-white">Send</span>
+                      <ArrowUp size={16} className="text-black" />
+                      <span className="text-xs font-bold uppercase tracking-widest text-black">Send</span>
                     </button>
                     <button
                       onClick={() => {
@@ -429,8 +449,8 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                       }}
                       className="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
                     >
-                      <ArrowDown size={16} className="text-white" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-white">Receive</span>
+                      <ArrowDown size={16} className="text-black" />
+                      <span className="text-xs font-bold uppercase tracking-widest text-black">Receive</span>
                     </button>
                   </div>
 
@@ -463,7 +483,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                           <TrendingUp size={24} className="text-blue-400" />
                         </div>
                         <div className="flex flex-col items-start">
-                          <span className="text-sm font-black uppercase tracking-widest text-white group-hover:text-blue-200 transition-colors">Lending & Loans</span>
+                          <span className="text-sm font-black uppercase tracking-widest text-black group-hover:text-blue-200 transition-colors">Lending & Loans</span>
                           <span className="text-[10px] text-zinc-400 font-medium tracking-wider">Earn Institutional Yield</span>
                         </div>
                       </div>
@@ -476,10 +496,10 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                     <div className="px-4 pt-4 grid grid-cols-1 border-b border-white/5">
                       <button
                         onClick={() => setActiveDashboardTab('assets')}
-                        className={`text-[9px] uppercase tracking-widest font-bold pb-3 whitespace-nowrap relative transition-colors flex justify-center text-white`}
+                        className={`text-[9px] uppercase tracking-widest font-bold pb-3 whitespace-nowrap relative transition-colors flex justify-center text-black`}
                       >
                         Assets
-                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></div>
+                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black"></div>
                       </button>
                     </div>
 
@@ -496,15 +516,14 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                     fallback="Ξ"
                                   />
                                 </div>
-                                <div>
-                                  <div className="text-sm font-bold text-white">Ethereum</div>
-                                  <div className="text-xs text-zinc-400">
+                                <div className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors">
+                                  <div className="text-sm font-bold text-black">
                                     {ethBalance} ETH
                                   </div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="text-sm font-bold text-white">
+                                <div className="text-sm font-bold text-black">
                                   ${ethValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                 </div>
                                 <div className="text-[10px] text-zinc-500">
@@ -522,15 +541,14 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                     fallback="S"
                                   />
                                 </div>
-                                <div>
-                                  <div className="text-sm font-bold text-white">Starknet</div>
-                                  <div className="text-xs text-zinc-400">
+                                <div className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors">
+                                  <div className="text-sm font-bold text-black">
                                     {strkBalance} STRK
                                   </div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="text-sm font-bold text-white">
+                                <div className="text-sm font-bold text-black">
                                   ${strkValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                 </div>
                                 <div className="text-[10px] text-zinc-500">
@@ -549,14 +567,14 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                   />
                                 </div>
                                 <div>
-                                  <div className="text-sm font-bold text-white">USD Coin</div>
+                                  <div className="text-sm font-bold text-black">USD Coin</div>
                                   <div className="text-xs text-zinc-400">
                                     {usdcBalance} USDC
                                   </div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="text-sm font-bold text-white">
+                                <div className="text-sm font-bold text-black">
                                   ${usdcValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                 </div>
                                 <div className="text-[10px] text-zinc-500">
@@ -598,13 +616,13 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                   <div className="space-y-6">
                     {/* Network Section */}
                     <div>
-                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-white mb-4">Network</h3>
+                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-black mb-4">Network</h3>
                       <NetworkSelector />
                     </div>
 
                     {/* View Address Activity Button */}
                     <div>
-                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-white mb-4">Explorer</h3>
+                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-black mb-4">Explorer</h3>
                       <button
                         onClick={() => {
                           if (wallet?.publicKey) {
@@ -612,7 +630,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                           }
                         }}
                         disabled={!wallet?.publicKey}
-                        className="w-full flex items-center justify-center gap-2 py-4 bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-50 disabled:hover:bg-white/5 transition-all text-white text-xs uppercase tracking-widest font-bold"
+                        className="w-full flex items-center justify-center gap-2 py-4 bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-50 disabled:hover:bg-white/5 transition-all text-black text-xs uppercase tracking-widest font-bold"
                       >
                         <ExternalLink size={14} />
                         View Address Activity
@@ -621,15 +639,15 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
                     {/* Active Session */}
                     <div>
-                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-white mb-4">Active Session</h3>
-                      <div className="p-4 bg-white/5 border border-white/10">
+                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-black mb-4">Active Session</h3>
+                      <div className="p-4 bg-gray-50 border border-gray-200">
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center">
+                          <div className="w-8 h-8 bg-zinc-200 rounded-full flex items-center justify-center">
                             <span className="text-xs">👤</span>
                           </div>
                           <div>
-                            <div className="text-sm font-bold text-white">{user?.email}</div>
-                            <div className="text-xs text-zinc-400">Connected via OTD SDK</div>
+                            <div className="text-sm font-bold text-black">{user?.email}</div>
+                            <div className="text-xs text-zinc-500">Connected via OTD SDK</div>
                           </div>
                         </div>
                       </div>
@@ -637,7 +655,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
                     {/* Profile Section */}
                     <div>
-                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-white mb-4">Profile</h3>
+                      <h3 className="text-[10px] uppercase tracking-widest font-bold text-black mb-4">Profile</h3>
                       <div className="p-4 bg-white/5 border border-white/10 space-y-4">
                         <div className="grid grid-cols-2 gap-3">
                           <div className="space-y-1">
@@ -669,7 +687,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                             value={profile.city}
                             onChange={(e) => setProfile({ ...profile, city: e.target.value })}
                             placeholder="City"
-                            className="w-full bg-black/40 border border-white/10 p-2 text-xs focus:border-white focus:outline-none text-white transition-colors"
+                            className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
                           />
                         </div>
 
@@ -681,7 +699,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                               value={profile.province}
                               onChange={(e) => setProfile({ ...profile, province: e.target.value })}
                               placeholder="Provincia"
-                              className="w-full bg-black/40 border border-white/10 p-2 text-xs focus:border-white focus:outline-none text-white transition-colors"
+                              className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
                             />
                           </div>
                           <div className="space-y-1">
@@ -691,7 +709,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                               value={profile.postalCode}
                               onChange={(e) => setProfile({ ...profile, postalCode: e.target.value })}
                               placeholder="C.P."
-                              className="w-full bg-black/40 border border-white/10 p-2 text-xs focus:border-white focus:outline-none text-white transition-colors"
+                              className="w-full bg-gray-50 border border-gray-200 p-2 text-xs focus:border-gray-300 focus:outline-none text-black transition-colors"
                             />
                           </div>
                         </div>
@@ -750,7 +768,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
 
                       {/* Dropdown Menu - Vista Expandida */}
                       {isTokenDropdownOpen && (
-                        <div className="absolute top-full left-0 right-0 mt-1 bg-black border border-white/10 z-50">
+                        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 z-50">
                           {(['ETH', 'STRK', 'USDC'] as const).map((token) => (
                             <button
                               key={token}
@@ -758,7 +776,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                 setSelectedToken(token);
                                 setIsTokenDropdownOpen(false);
                               }}
-                              className="w-full p-4 hover:bg-white/5 transition-colors flex items-center justify-between border-b border-white/5 last:border-b-0"
+                              className="w-full p-4 hover:bg-gray-50 transition-colors flex items-center justify-between border-b border-gray-100 last:border-b-0"
                             >
                               <div className="flex items-center gap-3">
                                 <div className="w-6 h-6 flex items-center justify-center">
@@ -770,8 +788,8 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
                                   />
                                 </div>
                                 <div className="text-left">
-                                  <div className="text-sm font-bold text-white">{token}</div>
-                                  <div className="text-xs text-zinc-500">{tokenData[token].name}</div>
+                                  <div className="text-sm font-bold text-black">{token}</div>
+                                  <div className="text-xs text-zinc-600">{tokenData[token].name}</div>
                                 </div>
                               </div>
                               <span className="text-sm text-zinc-400">
@@ -1101,9 +1119,12 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-zinc-950 border-t border-white/10 flex items-center justify-between text-[10px] text-zinc-300 uppercase tracking-widest font-bold shrink-0">
-          <div>Open Source Product from ReflecterLabs.xyz</div>
-          <div>V0.0.1</div>
+        <div className="px-4 py-2 bg-white border-t border-gray-100 flex items-center justify-between shrink-0 rounded-b-2xl">
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-gray-500 uppercase tracking-wide">Developed by</span>
+            <img src="/reflecterlabs-logotype.png" alt="Reflecter Labs" className="h-3 object-contain opacity-70" />
+          </div>
+          <div className="text-[9px] text-gray-400 font-mono">v0.0.1</div>
         </div>
       </div>
 

@@ -21,16 +21,16 @@ export default function HomePage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-black">
+      <div className="flex min-h-screen items-center justify-center bg-white">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-white">Cargando...</h1>
+          <h1 className="text-2xl font-bold text-black">Cargando...</h1>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-black text-white selection:bg-white selection:text-black min-h-screen pb-16">
+    <div className="bg-white text-black selection:bg-black selection:text-white min-h-screen pb-16">
       <Header onOpenWallet={handleOpenWallet} />
       <Landing />
       <Footer />

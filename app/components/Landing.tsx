@@ -37,17 +37,17 @@ const Landing: React.FC = () => {
       <section className="px-6 max-w-7xl mx-auto flex flex-col justify-start pt-2 min-h-[70vh]">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-4">
           <div className="order-1">
-            <div className="inline-block px-3 py-1 border border-white/20 text-[10px] uppercase tracking-[0.3em] text-zinc-300 mb-4 animate-pulse">
+            <div className="inline-block px-3 py-1 border border-[#ABDEC2]/50 bg-[#ABDEC2]/10 text-[10px] uppercase tracking-[0.3em] text-[#5a9975] mb-4 animate-pulse">
               Universal Web3 SDK v1.0
             </div>
-            <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 leading-[0.9]">
-              <span className="text-white">
-                SERVERLESS <br /> W3 SDK.
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-[0.95]">
+              <span className="text-black">
+                The DeFi lending infrastructure
+                <br />every institution needs
               </span>
             </h1>
-            <p className="text-xl text-zinc-300 max-w-xl font-light leading-relaxed">
-              Unlock the full potential of Web3 with a single line of code. 
-              OpenTheDoorz provides social login, encrypted cloud storage, and high-speed execution—completely serverless.
+            <p className="text-xl text-zinc-700 max-w-xl font-light leading-relaxed">
+              Unlock the full potential of Web3 with a single line of code. OpenTheDoorz provides social login, encrypted cloud storage, y servicios DeFI.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-6">
@@ -55,52 +55,52 @@ const Landing: React.FC = () => {
                 href="https://openthedoorz.gitbook.io/open-the-doorz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-zinc-200 transition-all flex items-center gap-2"
+                className="px-6 py-3 bg-black text-white text-[10px] font-black uppercase tracking-[0.2em] hover:opacity-90 transition-all flex items-center gap-2"
               >
                 View Documentation
               </Link>
               <Link
-                href="https://github.com/reflecterlabs/openthedoorz-sdk"
+                href="https://www.reflecterlabs.xyz/start-project"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/5 transition-all flex items-center gap-2"
+                className="px-6 py-3 border border-black/10 text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-black/5 transition-all flex items-center gap-2"
               >
-                GitHub Repo
+                Start Project
               </Link>
             </div>
           </div>
 
           {/* Wallet Preview in Hero - Now visible on mobile too */}
           <div className="relative order-2 block mt-12 lg:mt-0">
-            <div className="absolute -inset-20 bg-white/5 blur-[120px] rounded-full pointer-events-none"></div>
-            <div className="relative z-10 border border-white/10 bg-black w-full max-w-[380px] mx-auto shadow-[0_0_100px_rgba(255,255,255,0.05)] lg:rotate-1 hover:rotate-0 transition-transform duration-700">
-              <div className="p-4 border-b border-white/10 flex items-center justify-between">
+            {/* Simplified light-themed wallet preview */}
+            <div className="relative z-10 border border-black/5 bg-white w-full max-w-[380px] mx-auto shadow-md lg:rotate-1 hover:rotate-0 transition-transform duration-700">
+              <div className="p-4 border-b border-black/5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-xs">OTD</div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">Preview Mode</span>
+                  <div className="w-8 h-8 bg-black text-white flex items-center justify-center font-bold text-xs">OTD</div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-700">Preview Mode</span>
                 </div>
               </div>
               <div className="p-6">
-                <div className="bg-zinc-900/40 border border-white/10 mb-4 flex flex-col relative overflow-hidden">
+                <div className="bg-white border border-black/5 mb-4 flex flex-col relative overflow-hidden">
                   <div className="p-4">
-                    <div className="text-[8px] uppercase text-zinc-300 font-bold tracking-widest mb-1">Active Wallet</div>
-                    <div className="font-mono text-[10px] text-zinc-400 mb-2 tracking-tighter">0x0471...952a</div>
-                    <div className="text-2xl font-extrabold tracking-tighter text-white">$5,352.60</div>
+                    <div className="text-[8px] uppercase text-zinc-700 font-bold tracking-widest mb-1">Active Wallet</div>
+                    <div className="font-mono text-[10px] text-zinc-600 mb-2 tracking-tighter">0x0471...952a</div>
+                    <div className="text-2xl font-extrabold tracking-tighter text-black">$5,352.60</div>
                   </div>
-                  <div className="grid grid-cols-2 border-t border-white/10 bg-white/5">
-                    <div className="py-2.5 flex items-center justify-center gap-1.5 border-r border-white/10 text-[8px] uppercase font-bold tracking-widest text-zinc-300">
+                  <div className="grid grid-cols-2 border-t border-black/5 bg-white">
+                    <div className="py-2.5 flex items-center justify-center gap-1.5 border-r border-black/5 text-[8px] uppercase font-bold tracking-widest text-zinc-700">
                       <ArrowUp size={10} /> Send
                     </div>
-                    <div className="py-2.5 flex items-center justify-center gap-1.5 text-[8px] uppercase font-bold tracking-widest text-zinc-300">
+                    <div className="py-2.5 flex items-center justify-center gap-1.5 text-[8px] uppercase font-bold tracking-widest text-zinc-700">
                       <ArrowDown size={10} /> Receive
                     </div>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-1.5 mb-6">
                   {['Storage', 'Lending', 'Staging'].map((label, idx) => (
-                    <div key={label} className="flex flex-col items-center gap-1 p-2 border border-white/5 bg-zinc-950/50">
-                      {idx === 0 ? <Database size={12} className="text-zinc-300" /> : idx === 1 ? <TrendingUp size={12} className="text-zinc-300" /> : <Layers size={12} className="text-zinc-300" />}
-                      <span className="text-[7px] uppercase font-bold tracking-widest text-zinc-300">{label}</span>
+                    <div key={label} className="flex flex-col items-center gap-1 p-2 border border-black/5 bg-white">
+                      {idx === 0 ? <Database size={12} className="text-zinc-700" /> : idx === 1 ? <TrendingUp size={12} className="text-zinc-700" /> : <Layers size={12} className="text-zinc-700" />}
+                      <span className="text-[7px] uppercase font-bold tracking-widest text-zinc-700">{label}</span>
                     </div>
                   ))}
                 </div>
@@ -109,40 +109,11 @@ const Landing: React.FC = () => {
           </div>
         </div>
 
-        {/* Powered By Infinite Carousel */}
-        <div className="w-full mt-4 py-8 border-t border-white/5 overflow-hidden">
-          <div className="max-w-7xl mx-auto mb-6 text-center">
-            <span className="text-[9px] uppercase tracking-[0.6em] text-zinc-300 font-bold">Universal Integration Layer</span>
-          </div>
-          
-          <div className="relative">
-            {/* Masking Gradients */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
-            
-            <div className="animate-scroll">
-              {carouselLogos.map((logo, index) => (
-                <div 
-                  key={index} 
-                  className="relative group px-6 md:px-16 flex items-center justify-center min-w-[140px] md:min-w-[200px]"
-                >
-                  {/* Halo Glow Effect */}
-                  <div className="absolute inset-0 bg-white/10 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 scale-[2.5] z-0"></div>
-                  
-                  <img 
-                    src={logo.src} 
-                    alt={logo.alt} 
-                    className={`${logo.class} relative z-10 transition-all duration-500 hover:scale-110 active:scale-95 object-contain`}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* Carousel removed per design update */}
       </section>
 
       {/* Features Grid */}
-      <section className="px-6 max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 mt-12">
+      <section className="px-6 max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6 bg-white mt-12 border border-gray-100 rounded-lg">
         <FeatureCard 
           icon={<Shield size={24} />} 
           title="Serverless Identity" 
@@ -167,11 +138,11 @@ const Landing: React.FC = () => {
 
       {/* Code Preview Section */}
       <section className="px-6 max-w-5xl mx-auto mt-40">
-        <div className="border border-white/10 p-1">
-          <div className="bg-zinc-900/50 p-6 md:p-12 border border-white/10">
-            <h2 className="text-3xl font-bold tracking-tight mb-6 uppercase tracking-tighter text-white">INTEGRATE IN MINUTES</h2>
-            <div className="bg-black border border-white/5 rounded p-4 font-mono text-sm overflow-x-auto">
-              <pre className="text-zinc-300">
+            <div className="border border-gray-100 p-1">
+          <div className="bg-gray-50 p-6 md:p-12 border border-gray-100 rounded">
+            <h2 className="text-3xl font-bold tracking-tight mb-6 uppercase tracking-tighter text-black">INTEGRATE IN MINUTES</h2>
+            <div className="bg-gray-100 border border-gray-100 rounded p-4 font-mono text-sm overflow-x-auto">
+              <pre className="text-zinc-800">
                 <code>{`// Initialize OpenTheDoorz
 import { DoorzProvider } from '@openthedoorz/sdk';
 
@@ -196,10 +167,10 @@ function App() {
 };
 
 const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; desc: string }> = ({ icon, title, desc }) => (
-  <div className="bg-black p-8 group hover:bg-zinc-900 transition-colors">
-    <div className="mb-6 text-zinc-300 group-hover:text-white transition-colors">{icon}</div>
-    <h3 className="text-lg font-bold mb-3 uppercase tracking-wider text-white">{title}</h3>
-    <p className="text-sm text-zinc-300 leading-relaxed">{desc}</p>
+  <div className="bg-white p-8 group hover:bg-zinc-50 transition-colors border border-gray-100">
+    <div className="mb-6 text-zinc-700 group-hover:text-black transition-colors">{icon}</div>
+    <h3 className="text-lg font-bold mb-3 uppercase tracking-wider text-black">{title}</h3>
+    <p className="text-sm text-zinc-600 leading-relaxed">{desc}</p>
   </div>
 );
 

@@ -9,19 +9,18 @@ interface HeaderProps {
   onOpenWallet: () => void;
 }
 
+// ThemeToggle removed — site enforces a single light theme
+
 const Header: React.FC<HeaderProps> = ({ onOpenWallet }) => {
   const pathname = usePathname();
   const { network } = useNetwork();
   
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-black/5">
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-white text-black flex items-center justify-center font-bold text-xs">
-            OTD
-          </div>
-          <Link href="/" className="text-sm font-bold tracking-tight hover:opacity-80 transition-opacity">
-            OPEN THE DOORZ
+          <Link href="/" className="flex items-center">
+            <img src="/OpenTheDoorz-Logotype-1.png" alt="OpenTheDoorz" className="h-8 w-auto object-contain" />
           </Link>
           <span className={`px-2 py-0.5 border text-[8px] font-bold uppercase tracking-widest ${
             network === 'MAINNET' 
@@ -43,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenWallet }) => {
           </Link>
           <button 
             onClick={onOpenWallet}
-            className="px-6 py-2 bg-white text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-200 transition-all"
+            className="px-6 py-2 bg-[#ABDEC2] text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-[#96d1b0] transition-all rounded-sm shadow-md hover:shadow-lg"
           >
             WALLET
           </button>

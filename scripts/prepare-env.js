@@ -2,11 +2,23 @@
 
 /**
  * Script to verify and inject environment variables before build
- * Creates .env.production dynamically from Cloudflare environment variables
+ * Creates .env.production dynamically from Cloudflare environment variables or .env.local
  */
 
 const fs = require('fs');
 const path = require('path');
+
+// Load .env.local if it exists (for local development)
+const envLocalPath = path.join(process.cwd(), '.env.local');
+if (fs.existsSync(envLocalPath)) {
+  const envLocalContent = fs.readFileSync(envLocalPath, 'utf8');
+  envLocalContent.split('\n').forEach(line => {
+    const [key, ...valueParts] = line.split('=');
+    if (key && !key.startsWith('#') && !process.env[key.trim()]) {
+      process.env[key.trim()] = valueParts.join('=').trim();
+    }
+  });
+}
 
 console.log('=== Environment Variables Check ===');
 console.log('NEXT_PUBLIC_FIREBASE_API_KEY:', process.env.NEXT_PUBLIC_FIREBASE_API_KEY ? '✓ Set' : '✗ Missing');
