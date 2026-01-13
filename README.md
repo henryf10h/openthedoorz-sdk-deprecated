@@ -1,4 +1,4 @@
-# OpenTheDoorz SDK
+# OpenTheDoorz SDK (v2)
 
 **OpenTheDoorz SDK** is an open-source serverless SDK designed for developers who want to build modern Web3 applications with production-ready infrastructure.
 
