@@ -234,7 +234,7 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
           }`}
       >
         {/* Header */}
-        <div className="p-4 border-b border-gray-100 flex items-center justify-between bg-white shrink-0 rounded-t-2xl">
+        <div className="px-4 py-2 border-b border-gray-100 flex items-center justify-between bg-white shrink-0 rounded-t-2xl">
           <div className="flex items-center gap-2">
             <span className="text-xs font-medium text-gray-700">
               {profile.firstName ? `Hola ${profile.firstName} 👋` : ''}
@@ -1119,9 +1119,12 @@ const WalletPopup: React.FC<WalletPopupProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-white border-t border-black/5 flex items-center justify-between text-[10px] text-zinc-600 uppercase tracking-widest font-bold shrink-0">
-          <div>Product by Reflecter Labs</div>
-          <div>V0.0.1</div>
+        <div className="px-4 py-2 bg-white border-t border-gray-100 flex items-center justify-between shrink-0 rounded-b-2xl">
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-gray-500 uppercase tracking-wide">Developed by</span>
+            <img src="/reflecterlabs-logotype.png" alt="Reflecter Labs" className="h-3 object-contain opacity-70" />
+          </div>
+          <div className="text-[9px] text-gray-400 font-mono">v0.0.1</div>
         </div>
       </div>
 
