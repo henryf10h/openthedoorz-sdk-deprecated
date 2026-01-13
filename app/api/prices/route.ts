@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 
-// Static response with fallback prices for CoinGecko
-// Routes cannot be dynamic when using `output: export` for static HTML export
-// Force static generation for compatibility with static HTML export
-export const dynamic = 'force-static';
+// Dynamic route for live CoinGecko price fetching via Vercel serverless functions
+export const dynamic = 'force-dynamic';
 export const revalidate = 60;
 
 export async function GET() {

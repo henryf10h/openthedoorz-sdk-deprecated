@@ -2,9 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   
-  // Cloudflare Pages compatibility - STATIC EXPORT
-  output: 'export',
-  images: { unoptimized: true },
+  // Vercel serverless functions - removed static export for dynamic routes
+  // images: { unoptimized: true },
   
   // Performance optimizations
   poweredByHeader: false,
