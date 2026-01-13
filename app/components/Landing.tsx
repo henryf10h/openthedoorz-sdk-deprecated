@@ -42,8 +42,8 @@ const Landing: React.FC = () => {
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter mb-4 leading-[0.95]">
               <span className="text-black">
-                La Infraestructura DeFI de préstamos
-                <br />que toda institución necesita
+                The DeFi lending infrastructure
+                <br />every institution needs
               </span>
             </h1>
             <p className="text-xl text-zinc-700 max-w-xl font-light leading-relaxed">

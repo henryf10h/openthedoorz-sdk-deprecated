@@ -102,7 +102,7 @@ export const VesuExplorer: React.FC<VesuExplorerProps> = ({ onBack, walletSessio
             <div className="flex-1 flex flex-col items-center justify-start pt-10 p-4">
                 <div className="w-full max-w-sm space-y-8 text-center">
                     <div className="space-y-4">
-                        <h2 className="text-4xl font-black text-white uppercase tracking-tighter">
+                        <h2 className="text-4xl font-black text-black uppercase tracking-tighter">
                             {activeTab === 'stake' ? 'Deposit & Earn' : 'Withdraw from Vault'}
                         </h2>
                         <p className="text-sm text-zinc-400 leading-relaxed font-light">
