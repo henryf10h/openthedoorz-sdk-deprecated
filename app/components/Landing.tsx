@@ -1,15 +1,13 @@
 
 import React from 'react';
-import Link from 'next/link';
-import { Shield, Zap, Cpu, Database, TrendingUp, Layers, ArrowUp, ArrowDown } from 'lucide-react';
+import { Database, TrendingUp, Layers, ArrowUp, ArrowDown } from 'lucide-react';
 
 const Landing: React.FC = () => {
   const partnerLogos = [
     { src: "https://avatars.githubusercontent.com/u/104390117", alt: "Starknet Foundation", class: "h-16 md:h-20" },
     { src: "https://www.cairo-lang.org/wp-content/uploads/2024/03/Cairo-logo.png", alt: "Cairo", class: "h-16 md:h-20" },
     { src: "https://www.gstatic.com/devrel-devsite/prod/ve08add287a6b4bdf8961ab8a1be50bf551be3816cdd70b7cc934114ff3ad5f10/firebase/images/touchicon-180.png", alt: "Firebase", class: "h-16 md:h-20" },
-    { src: "https://www.chipipay.com/chipi-white.png", alt: "ChipiPay", class: "h-12 md:h-14" },
-    { src: "https://docs.vesu.xyz/img/logo.png", alt: "Vesu", class: "h-10 md:h-12 brightness-0 invert" }
+    // Removed ChipiPay and Vesu per request
   ];
 
   // Double the logos for a seamless infinite loop
@@ -42,32 +40,15 @@ const Landing: React.FC = () => {
             </div>
             <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter mb-4 leading-[0.9]">
               <span className="text-white">
-                SERVERLESS <br /> W3 SDK.
+                Your direct bridge to Web3.
               </span>
             </h1>
             <p className="text-xl text-zinc-300 max-w-xl font-light leading-relaxed">
-              Unlock the full potential of Web3 with a single line of code. 
-              OpenTheDoorz provides social login, encrypted cloud storage, and high-speed execution—completely serverless.
+              Enables banks to onboard their users onto Starknet without complex wallets, using only their Google account. 
+              No private key custody, zero gas fees for transactions, and built-in access to lending solutions.
             </p>
 
-            <div className="flex flex-wrap gap-4 pt-6">
-              <Link
-                href="https://openthedoorz.gitbook.io/open-the-doorz/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-zinc-200 transition-all flex items-center gap-2"
-              >
-                View Documentation
-              </Link>
-              <Link
-                href="https://github.com/reflecterlabs/openthedoorz-sdk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/5 transition-all flex items-center gap-2"
-              >
-                GitHub Repo
-              </Link>
-            </div>
+            
           </div>
 
           {/* Wallet Preview in Hero - Now visible on mobile too */}
@@ -141,66 +122,9 @@ const Landing: React.FC = () => {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="px-6 max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 mt-12">
-        <FeatureCard 
-          icon={<Shield size={24} />} 
-          title="Serverless Identity" 
-          desc="Drop-in social login and non-custodial wallet creation using secure email/password auth protocols."
-        />
-        <FeatureCard 
-          icon={<Zap size={24} />} 
-          title="Universal Bridge" 
-          desc="Low-latency transaction execution and cross-chain bridging capabilities built directly into the SDK."
-        />
-        <FeatureCard 
-          icon={<Database size={24} />} 
-          title="Cloud Storage" 
-          desc="Encrypted user data and session management powered by Firebase for a persistent Web3 profile."
-        />
-        <FeatureCard 
-          icon={<Cpu size={24} />} 
-          title="One-Line Integration" 
-          desc="A comprehensive developer experience designed for high-performance applications and clean stacks."
-        />
-      </section>
-
-      {/* Code Preview Section */}
-      <section className="px-6 max-w-5xl mx-auto mt-40">
-        <div className="border border-white/10 p-1">
-          <div className="bg-zinc-900/50 p-6 md:p-12 border border-white/10">
-            <h2 className="text-3xl font-bold tracking-tight mb-6 uppercase tracking-tighter text-white">INTEGRATE IN MINUTES</h2>
-            <div className="bg-black border border-white/5 rounded p-4 font-mono text-sm overflow-x-auto">
-              <pre className="text-zinc-300">
-                <code>{`// Initialize OpenTheDoorz
-import { DoorzProvider } from '@openthedoorz/sdk';
-
-function App() {
-  return (
-    <DoorzProvider 
-      apiKey="your_api_key" 
-      storage="serverless-firebase"
-      bridge="auto"
-    >
-      <YourApp />
-    </DoorzProvider>
-  );
-}`}</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 };
-
-const FeatureCard: React.FC<{ icon: React.ReactNode; title: string; desc: string }> = ({ icon, title, desc }) => (
-  <div className="bg-black p-8 group hover:bg-zinc-900 transition-colors">
-    <div className="mb-6 text-zinc-300 group-hover:text-white transition-colors">{icon}</div>
-    <h3 className="text-lg font-bold mb-3 uppercase tracking-wider text-white">{title}</h3>
-    <p className="text-sm text-zinc-300 leading-relaxed">{desc}</p>
-  </div>
-);
 
 export default Landing;

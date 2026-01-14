@@ -6,6 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <head>
+        <link rel="icon" href="/content.webp" type="image/webp" />
         {/* Run as early as possible to strip extension-injected attributes before React hydrates */}
         <Script id="pre-hydration-cleanup" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: `
           (function(){
