@@ -26,6 +26,7 @@
     "@google/genai": "^1.34.0",
     "@layerswap/wallet-starknet": "^1.1.2",
     "@layerswap/widget": "^1.1.3",
+    "@supabase/supabase-js": "^2.90.1",
     "@tanstack/react-query": "^5.90.16",
     "@types/node": "^20.0.0",
     "@types/react": "^18.3.1",

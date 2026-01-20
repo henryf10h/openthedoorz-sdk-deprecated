@@ -1,8 +1,60 @@
+'use client';
 
-import React from 'react';
-import { Database, TrendingUp, Layers, ArrowUp, ArrowDown, Settings, X, RotateCw, EyeOff, ExternalLink, ArrowRight, Zap, Globe, Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { Database, TrendingUp, Layers, ArrowUp, ArrowDown, Settings, X, RotateCw, EyeOff, ExternalLink, ArrowRight, Zap, Globe, Shield, Mail, CheckCircle2 } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
 
 const Landing: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+
+  // Initialize Supabase client
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+
+  const handleWaitingListSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage(null);
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setMessage({ type: 'error', text: 'Please enter a valid email address' });
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('waiting_list')
+        .insert([
+          {
+            email: email.toLowerCase().trim(),
+            created_at: new Date().toISOString()
+          }
+        ]);
+
+      if (error) {
+        // Check if it's a duplicate email error
+        if (error.code === '23505') {
+          setMessage({ type: 'error', text: 'This email is already on the waiting list' });
+        } else {
+          setMessage({ type: 'error', text: 'Something went wrong. Please try again.' });
+        }
+      } else {
+        setMessage({ type: 'success', text: 'Successfully joined the waiting list!' });
+        setEmail('');
+      }
+    } catch (err) {
+      setMessage({ type: 'error', text: 'An unexpected error occurred' });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   const partnerLogos = [
     { src: "https://avatars.githubusercontent.com/u/104390117", alt: "Starknet Foundation", class: "h-16 md:h-20" },
     { src: "https://www.cairo-lang.org/wp-content/uploads/2024/03/Cairo-logo.png", alt: "Cairo", class: "h-16 md:h-20" },
@@ -51,10 +103,55 @@ const Landing: React.FC = () => {
             <br />
             <br />
             <p className="text-xl text-zinc-300 max-w-xl font-light leading-relaxed">
-              Enables banks to onboard their users onto Starknet without complex wallets, using only their Google account.
-              No private key custody, zero gas fees for transactions, and built-in access to lending solutions.
+              It allows banks to onboard their users on Starknet without complex wallets, using only their email.
+              No custodial of private keys, no transaction fees, and built-in access to lending solutions.
             </p>
 
+            {/* Waiting List Form */}
+            <div className="mt-8 max-w-xl">
+              <form onSubmit={handleWaitingListSubmit} className="flex flex-col sm:flex-row gap-3">
+                <div className="relative flex-1">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" size={18} />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    disabled={isLoading}
+                    className="w-full pl-12 pr-4 py-4 bg-black border border-white/20 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold uppercase tracking-wider transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                >
+                  {isLoading ? (
+                    <>
+                      <RotateCw size={18} className="animate-spin" />
+                      <span>Joining...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Waiting List</span>
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+              </form>
+
+              {/* Success/Error Messages */}
+              {message && (
+                <div className={`mt-4 p-4 border flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300 ${message.type === 'success'
+                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                  : 'bg-red-500/10 border-red-500/30 text-red-400'
+                  }`}>
+                  {message.type === 'success' && <CheckCircle2 size={20} />}
+                  {message.type === 'error' && <X size={20} />}
+                  <span className="text-sm font-medium">{message.text}</span>
+                </div>
+              )}
+            </div>
 
           </div>
 
