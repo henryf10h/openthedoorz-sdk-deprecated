@@ -9,16 +9,27 @@ const Landing: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
 
-  // Initialize Supabase client
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+  // Check if Supabase credentials are available
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const isSupabaseConfigured = supabaseUrl && supabaseKey;
+
+  // Initialize Supabase client only if credentials are available
+  const supabase = isSupabaseConfigured
+    ? createClient(supabaseUrl, supabaseKey)
+    : null;
 
   const handleWaitingListSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setMessage(null);
+
+    // Check if Supabase is configured
+    if (!supabase) {
+      setMessage({ type: 'error', text: 'Service temporarily unavailable. Please try again later.' });
+      setIsLoading(false);
+      return;
+    }
 
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
